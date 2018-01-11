@@ -1,0 +1,8 @@
+{
+    "name": "Enemies",
+    "references": [
+        "Player"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}
