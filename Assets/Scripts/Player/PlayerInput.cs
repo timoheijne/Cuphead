@@ -8,11 +8,28 @@ public class PlayerInput : MonoBehaviour
     {
         get
         {
-            return Input.GetKey(KeyCode.D) ? 1 
-                : Input.GetKey(KeyCode.A) ? -1 : 0;
+            return Input.GetKey(KeyCode.RightArrow) ? 1 
+                : Input.GetKey(KeyCode.LeftArrow) ? -1 : 0;
         }
     }
 
+    public bool AimingUp
+    {
+        get { return Input.GetKey(KeyCode.UpArrow); }
+    }
+
+    public int LastFacingDirection { get; private set; }
+
+    void Start()
+    {
+        LastFacingDirection = 1;
+    }
+   
+    void Update()
+    {
+        if (MoveDirection != 0) LastFacingDirection = MoveDirection;
+    }
+    
     public bool Jump
     {
         get { return Input.GetKeyDown(KeyCode.Space); }
