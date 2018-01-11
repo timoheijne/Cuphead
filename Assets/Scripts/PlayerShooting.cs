@@ -7,11 +7,6 @@ public class PlayerShooting : MonoBehaviour {
 	[SerializeField]
 	private GameObject _projectile;
 	
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		Vector3 direction = transform.position;
