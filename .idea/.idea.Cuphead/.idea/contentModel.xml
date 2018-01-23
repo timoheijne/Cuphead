@@ -4,6 +4,7 @@
     <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_Cuphead.-1586344047.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Plugins" t="Include">
           <e p="Editor" t="Include">
@@ -13,10 +14,35 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="Camera" t="Include">
+            <e p="Camera.asmdef" t="Include" />
+            <e p="RGBSplit.cs" t="Include" />
+            <e p="RGBSplit.shader" t="Include" />
+          </e>
+          <e p="Enemy" t="Include">
+            <e p="Angel.cs" t="Include" />
+            <e p="Boss.cs" t="Include" />
+            <e p="Enemies.asmdef" t="Include" />
+          </e>
+          <e p="GameModifiers" t="Include">
+            <e p="Modifier.cs" t="Include" />
+            <e p="Modifiers" t="Include">
+              <e p="CameraRotationModifier.cs" t="Include" />
+              <e p="InvertedControlsModifier.cs" t="Include" />
+              <e p="JumpDelayModifier.cs" t="Include" />
+            </e>
+            <e p="Randomiser.cs" t="Include" />
+          </e>
+          <e p="Generics" t="Include">
+            <e p="Generics.asmdef" t="Include" />
+            <e p="Health.cs" t="Include" />
+          </e>
           <e p="Player" t="Include">
             <e p="Player.asmdef" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
+            <e p="PlayerShooting.cs" t="Include" />
+            <e p="Projectile.cs" t="Include" />
           </e>
           <e p="Utilities" t="Include">
             <e p="FPSDisplay.cs" t="Include" />
@@ -24,7 +50,10 @@
           </e>
         </e>
       </e>
+      <e p="Camera.csproj" t="IncludeRecursive" />
       <e p="Cuphead.sln" t="IncludeFlat" />
+      <e p="Enemies.csproj" t="IncludeRecursive" />
+      <e p="Generics.csproj" t="IncludeRecursive" />
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />

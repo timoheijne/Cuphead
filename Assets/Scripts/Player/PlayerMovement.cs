@@ -26,28 +26,30 @@ public class PlayerMovement : MonoBehaviour
 	
 	void Update ()
 	{
+		if (_pi.Jump && CanJump && 
+		    !PlayerInput.jumpdelay) Jump();
+		print(CanJump);
 		Movement();
-		if (_pi.Jump && CanJump) Jump();
 	}
 
-	void Jump()
+	public void Jump()
 	{
 		var vel = _rigid.velocity;
 		vel.y = JumpPower;
 		_rigid.velocity = vel;
 	}
 
-	private bool CanJump
+	public bool CanJump
 	{
 		get
-		{
-			Vector3[] rayorigins = new Vector3[]
+		{	
+			var rayorigins = new Vector3[]
 			{
-				transform.position + new Vector3(-0.5f, -0.5f),
-				transform.position + new Vector3(0.5f, -0.5f)
+				transform.position + new Vector3(-0.5f, -0.45f),
+				transform.position + new Vector3(0.5f, -0.45f)
 			};
 
-			return rayorigins.Any(rayorigin => Physics2D.Raycast(rayorigin, Vector3.down, 0.2f, jumpLayer));
+			return rayorigins.Any(rayorigin => Physics2D.Raycast(rayorigin, Vector3.down, 1f, jumpLayer).collider != null);
 		}
 	}
 

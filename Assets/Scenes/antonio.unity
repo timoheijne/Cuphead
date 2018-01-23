@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 1450097656}
   - component: {fileID: 1450097655}
   - component: {fileID: 1450097654}
+  - component: {fileID: 1450097653}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -346,6 +347,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!50 &1450097653
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1450097652}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &1450097654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -847,6 +868,7 @@ GameObject:
   - component: {fileID: 1934909689}
   - component: {fileID: 1934909688}
   - component: {fileID: 1934909692}
+  - component: {fileID: 1934909693}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -928,3 +950,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c0dc31ab67a4ebd87281084bb247d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1934909693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1934909687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74f15512eb5fb45c9895f6e1870b9f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shader: {fileID: 4800000, guid: 8052d5c889c5a438e94c5b91757ab665, type: 3}
+  offset: 0.78
