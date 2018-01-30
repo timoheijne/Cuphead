@@ -13,16 +13,15 @@ public class GateAnimation : MonoBehaviour {
 	}
 
 	public void SetState(EnemyGate.GateStatus type) {
-		ResetAnimations();
 		switch(type) {
 			case EnemyGate.GateStatus.Spikes:
-				_animator.SetBool("isSpiking", true);
+				Trigger("Spike");
 				break;
 			case EnemyGate.GateStatus.Trash:
-				_animator.SetBool("isTrashing", true);
+				Trigger("Trash");
 				break;
 			case EnemyGate.GateStatus.Smash:
-				_animator.SetBool("isSmashing", true);
+				Trigger("Smash");
 				break;
 			case EnemyGate.GateStatus.Idle:
 				break;
@@ -36,15 +35,5 @@ public class GateAnimation : MonoBehaviour {
 	
 	public void Trigger(string name) {
 		_animator.SetTrigger(name);
-	}
-
-	private void ResetAnimations() {
-		foreach (var parameter in _animator.parameters) {
-			if (parameter.type == AnimatorControllerParameterType.Bool) {
-				_animator.SetBool(parameter.name, false);
-			}
-		}
-	}
-
-	
+	}	
 }
