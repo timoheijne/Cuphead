@@ -18,6 +18,12 @@ public class PlayerHealth : MonoBehaviour {
 	[SerializeField]
 	private float _maxCooldown = 5;
 	
+	/*
+	 * private GameObject heart1;
+	 * private GameObject heart2;
+	 * private GameObject heart3;
+	 */
+	
 	// Use this for initialization
 	void Start () {
 		_sr = GetComponent<SpriteRenderer>();
