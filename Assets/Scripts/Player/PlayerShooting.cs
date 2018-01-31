@@ -1,11 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour {
-
+public class PlayerShooting : MonoBehaviour
+{
+	
+	public EventHandler OnShoot;
+	
 	[SerializeField]
 	private GameObject _projectile;
+
+	[SerializeField] private Transform _exitpoint;
 	private PlayerInput _playerInput;
 
 	private float _lastShooTime;
@@ -33,9 +37,11 @@ public class PlayerShooting : MonoBehaviour {
 			print(_playerInput.LastFacingDirection);
 		}
 			
-		GameObject _bullet = Instantiate(_projectile, transform.position, Quaternion.Euler(rotation));
+		GameObject _bullet = Instantiate(_projectile, _exitpoint.position, Quaternion.Euler(rotation));
 		Destroy(_bullet, 5);
 
 		_lastShooTime = Time.time;
+
+		if (OnShoot != null) OnShoot(this, null);
 	}
 }

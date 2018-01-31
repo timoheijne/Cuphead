@@ -1,10 +1,13 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D)),
 RequireComponent(typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
+	public EventHandler OnJump;
+	
 	[SerializeField] private LayerMask jumpLayer;
 	
 	private Rigidbody2D _rigid;
@@ -17,6 +20,11 @@ public class PlayerMovement : MonoBehaviour
 	private const float JumpPower = 10f;
 
 	private float _xVelocity;
+
+	public float XVelocity
+	{
+		get { return _xVelocity; }
+	}
 	
 	void Start ()
 	{
@@ -37,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 		var vel = _rigid.velocity;
 		vel.y = JumpPower;
 		_rigid.velocity = vel;
+		if (OnJump != null) OnJump(this, null);
 	}
 
 	public bool CanJump
@@ -54,11 +63,14 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	void Movement()
-	{
+	{	
 		var velocity = _rigid.velocity;
 		int sign = _pi.MoveDirection;
 		_xVelocity = HorizontalMove(sign, _xVelocity);
 		velocity.x = _xVelocity;
+		
+		if (_pi.InterruptMoveKey) velocity.x = 0;
+
 		_rigid.velocity = velocity;
 	}
 

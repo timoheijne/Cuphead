@@ -25,6 +25,11 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    public bool InterruptMoveKey
+    {
+        get { return Input.GetKey(KeyCode.C); }
+    }
+
     public int LastFacingDirection { get; private set; }
 
     private void Start()
