@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour {
 
 		_lastDamage = Time.time;
 		health -= 1;
-		Blink();
+		StartCoroutine(Blink());
 		
 		if (health <= 0) {
 			if (HasDied != null) {
