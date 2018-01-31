@@ -24,5 +24,9 @@ namespace GameModifiers.Modifiers
         {
             _camera.transform.rotation = Quaternion.identity;
         }
+
+        public CameraRotationModifier(string name) : base(name)
+        {
+        }
     }
 }
