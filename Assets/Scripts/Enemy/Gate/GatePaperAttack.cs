@@ -21,8 +21,6 @@ public class GatePaperAttack : MonoBehaviour {
 		// We Spawn and we move outside of the screen and continue a rush to the players position and destroy
 		_player = GameObject.FindGameObjectWithTag("Player").transform;
 		
-		
-		
 		_startPosition = transform.position;
 		_endPosition = _player.transform.position;
 		_endPosition.y = _startPosition.y;

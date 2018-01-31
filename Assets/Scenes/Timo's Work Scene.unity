@@ -960,6 +960,8 @@ GameObject:
   - component: {fileID: 1614490740}
   - component: {fileID: 1614490743}
   - component: {fileID: 1614490742}
+  - component: {fileID: 1614490744}
+  - component: {fileID: 1614490745}
   m_Layer: 10
   m_Name: Gate
   m_TagString: Untagged
@@ -1107,6 +1109,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403633d0384006f4a89f63216326d830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1614490744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1614490736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68baa3475ff84549870b926d7bffa96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 100
+--- !u!114 &1614490745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1614490736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613e40f8d1106104883e2e55bc952a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spike1: {fileID: 1479455351978496, guid: 5e71fce830a031c40925378b19078402, type: 2}
+  spike2: {fileID: 1479455351978496, guid: 5e71fce830a031c40925378b19078402, type: 2}
+  spike1Offset: {x: 0, y: 0, z: 0}
+  spike2Offset: {x: 0, y: 0, z: 0}
 --- !u!1 &1676434939
 GameObject:
   m_ObjectHideFlags: 0
