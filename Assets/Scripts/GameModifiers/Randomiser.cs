@@ -8,6 +8,15 @@ public class Randomiser : MonoBehaviour
 	private Modifier _currentModifier;
 
 	private List<Modifier> AllModifiers;
+	private List<Sprite> ModifierSprites;
+
+	private GameObject _player;
+
+	public GameObject PLAYER
+	{
+		get { return _player ?? (_player = GameObject.FindGameObjectWithTag("Player")); }
+	}
+	
 
 	void Start()
 	{
@@ -19,9 +28,20 @@ public class Randomiser : MonoBehaviour
 	{
 		AllModifiers = new List<Modifier>()
 		{
-			new CameraRotationModifier(),
-			new InvertedControlsModifier(),
-			new JumpDelayModifier()
+			new CameraRotationModifier("CONSTANTLY ROTATING CAMERA"),
+			new InvertedControlsModifier("INVERTED CONTROLS"),
+			new JumpDelayModifier("JUMP DELAY"),
+			new CoolModeModifier("COOL MODE"),
+			new LimitedAmmoModifier("LIMITED AMMO")
+		};
+
+		ModifierSprites = new List<Sprite>()
+		{
+			Resources.Load<Sprite>("draaien beeld"),
+			Resources.Load<Sprite>("inverted controls"),
+			Resources.Load<Sprite>("jump delay"),
+			Resources.Load<Sprite>("cool mode"),
+			Resources.Load<Sprite>("limited ammo")
 		};
 	}
 	

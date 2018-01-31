@@ -46,5 +46,9 @@ namespace GameModifiers.Modifiers
         {
             PlayerInput.jumpdelay = false;
         }
+
+        public JumpDelayModifier(string name) : base(name)
+        {
+        }
     }
 }

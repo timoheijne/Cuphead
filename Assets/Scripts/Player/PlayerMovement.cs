@@ -36,7 +36,6 @@ public class PlayerMovement : MonoBehaviour
 	{
 		if (_pi.Jump && CanJump && 
 		    !PlayerInput.jumpdelay) Jump();
-		print(CanJump);
 		Movement();
 	}
 

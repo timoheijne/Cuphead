@@ -17,7 +17,7 @@ public class PlayerAnimation : MonoBehaviour
         var shooting = GetComponent<PlayerShooting>();
         
         movement.OnJump += OnJump;
-        shooting.OnShoot += OnShoot;
+        PlayerShooting.OnShoot += OnShoot;
     }
 
     private void OnShoot(object sender, EventArgs eventArgs)

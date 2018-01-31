@@ -15,5 +15,9 @@
         {
             PlayerInput.inverted = false;
         }
+
+        public InvertedControlsModifier(string name) : base(name)
+        {
+        }
     }
 }
