@@ -6,6 +6,10 @@ using UnityEngine;
 [RequireComponent(typeof(GateAnimation))]
 public class EnemyGate : MonoBehaviour {
 
+
+	public GameObject trashObject;
+	public GameObject spikeObject;
+	
 	private GameObject _player;
 	private GateAnimation _animator;
 
@@ -64,11 +68,9 @@ public class EnemyGate : MonoBehaviour {
 			int random = Mathf.FloorToInt(Random.Range(0, 2));
 			Debug.Log("EnemyGate :: Random Attack: " + random);
 			if (random == 1) {
-				AttackSpike();
 				state = GateStatus.Spikes;
 			}
 			else {
-				AttackTrash();
 				state = GateStatus.Trash;
 			}
 		}
@@ -92,7 +94,13 @@ public class EnemyGate : MonoBehaviour {
 	}
 
 	void AttackTrash() {
-		// Open gate and send trash through gate
+		// Gate is open send the trash through
+		Vector3 pos = Camera.main.transform.position;
+		Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0, Camera.main.nearClipPlane));
+		pos.x = p.x + 5;
+		pos.z = 0;
+		
+		GameObject go = Instantiate(trashObject, pos, trashObject.transform.rotation);
 	}
 
 	void AttackSpike() {
