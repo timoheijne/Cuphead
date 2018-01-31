@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Created By Timo Heijne
 [RequireComponent(typeof(Collider2D))]
 public class Health : MonoBehaviour {
 
