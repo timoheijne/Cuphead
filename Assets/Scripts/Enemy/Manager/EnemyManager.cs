@@ -90,7 +90,7 @@ public class EnemyManager : MonoBehaviour {
 
 	IEnumerator DisableObject(Enemy enemy) {
 		yield return new WaitForSeconds(2f);
-		DeathExplosionSpawner.instance.SpawnAtPoint(activeEnemy.activeGameObject.transform.position);
+		EffectManager.instance.SpawnExplosionAtPoint(activeEnemy.activeGameObject.transform.position);
 		activeEnemy.activeGameObject.SetActive(false);
 	}
 

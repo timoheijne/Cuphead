@@ -55,6 +55,8 @@ public class Health : MonoBehaviour {
 		if (other.collider.tag == "Projectile")
 		{
 			Damage();
+			
+			EffectManager.instance.SpawnHitAtPoint(other.transform.position);
 			Destroy(other.gameObject);
 		}
 	}

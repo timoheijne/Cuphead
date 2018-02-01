@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+// Created By Timo Heijne
 [System.Serializable]
 public class Enemy {
     public string name;

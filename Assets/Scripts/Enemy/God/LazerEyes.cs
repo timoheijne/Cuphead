@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// Created By Timoheijne
 
+// Created By Timoheijne
 /// <summary>
 /// This handels the laZer eye's of god (AND YES LAZER IS THE SUPPERIOR WAY OF SPELLING "LASER"..) 
 /// </summary>
@@ -50,7 +50,7 @@ public class LazerEyes : MonoBehaviour {
 			
 			_lineRenderer.SetPositions(new Vector3[] {endPos, _startLocation.position} );
 
-			if (fracJourney >= 1) {
+			if (fracJourney >= 1.5) {
 				_lineRenderer.SetPositions(new Vector3[] {Vector3.zero, Vector3.zero});
 				yield break;
 			}
