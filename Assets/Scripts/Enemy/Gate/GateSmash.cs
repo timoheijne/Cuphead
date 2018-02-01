@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+// Created By Timo Heijne
 public class GateSmash : MonoBehaviour {
 
 	private EnemyGate _enemyGate;

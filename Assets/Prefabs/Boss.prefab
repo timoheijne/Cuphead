@@ -69,13 +69,15 @@ GameObject:
   - component: {fileID: 212224699307877344}
   - component: {fileID: 60393005317593648}
   - component: {fileID: 114350344194938914}
+  - component: {fileID: 95354853678905322}
+  - component: {fileID: 114593140146421784}
   m_Layer: 10
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1630701557211798
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +369,23 @@ PolygonCollider2D:
     - - {x: 1.425, y: 1.9}
       - {x: 1.395, y: 1.87}
       - {x: 1.405, y: 1.87}
+--- !u!95 &95354853678905322
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1599158349375420}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3788c7189e567324a9d3500d857893e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114054204844075632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -400,6 +419,7 @@ MonoBehaviour:
   thunderStrike: {fileID: 1980074300322576, guid: d587851ed2db87e4bb8e307c7969ee0a,
     type: 2}
   angel: {fileID: 1558262050885510, guid: e18918a4c3be85644aecc0927496bba4, type: 2}
+  state: 0
 --- !u!114 &114373790194720114
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -416,6 +436,17 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294966271
   speed: 25
+--- !u!114 &114593140146421784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1599158349375420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e302dd7f34327434ab063d9bc315bca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &120049967281800038
 LineRenderer:
   m_ObjectHideFlags: 1

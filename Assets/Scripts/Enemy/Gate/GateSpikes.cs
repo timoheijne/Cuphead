@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Created By Timo Heijne
+
 /// <summary>
 /// Handle the spawning & despawning of the spikes.
 /// </summary>
