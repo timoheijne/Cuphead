@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Created by Timo Heijne
+/// <summary>
+/// Here we decide what attack the gate should do, we also handle what should happen when the gate is ded
+/// </summary>
 [RequireComponent(typeof(GateAnimation))]
 public class EnemyGate : MonoBehaviour {
 
 
 	public GameObject trashObject;
-	public GameObject spikeObject;
 	
 	private GameObject _player;
 	private GateAnimation _animator;
@@ -19,7 +21,6 @@ public class EnemyGate : MonoBehaviour {
 		Spikes,
 		Trash,
 		Smash,
-		SmashRecover,
 		Idle,
 		Dead
 	}
@@ -101,11 +102,6 @@ public class EnemyGate : MonoBehaviour {
 		pos.z = 0;
 		
 		GameObject go = Instantiate(trashObject, pos, trashObject.transform.rotation);
-	}
-
-	void AttackSpike() {
-		// Make the gate shit a spike
-		
 	}
 
 	private void OnTriggerEnter2D(Collider2D other) {

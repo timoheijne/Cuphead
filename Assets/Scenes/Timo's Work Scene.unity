@@ -491,6 +491,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb77928420c20244199c0934245eaf43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
+  _minCooldown: 5
 --- !u!1 &906463717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1096,7 +1098,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trashObject: {fileID: 1715783223475244, guid: 7b28bc43391574309bc3c738ab095bf3,
     type: 2}
-  spikeObject: {fileID: 0}
   attackDelay: 5
 --- !u!114 &1614490743
 MonoBehaviour:
