@@ -7,12 +7,9 @@ public class Enemy {
     public GameObject prefab;
     public float health = 100;
 
-    [HideInInspector]
-    public int killed = 0; // Times this boss has been killed
-    
-    [HideInInspector]
-    public Health healthScript;
-    
-    [HideInInspector]
-    public GameObject activeGameObject;
+    [HideInInspector] public int killed = 0; // Times this boss has been killed
+
+    [HideInInspector] public Health healthScript;
+
+    [HideInInspector] public GameObject activeGameObject;
 }

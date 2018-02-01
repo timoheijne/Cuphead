@@ -4,9 +4,8 @@ using UnityEngine;
 
 // Created By Timo Heijne
 public class Angel : MonoBehaviour {
-
     private Camera _main;
-    
+
     public float speed = 1.0F;
     private float _startTime;
     private float _journeyLength;
@@ -16,9 +15,9 @@ public class Angel : MonoBehaviour {
     private Vector3 _endPosition;
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
-    
-    [SerializeField] private GameObject arrow;
-    
+
+    [SerializeField] private GameObject _arrow;
+
     [SerializeField] private Vector3 _angelOffset;
 
     enum AngelStatus {
@@ -27,8 +26,8 @@ public class Angel : MonoBehaviour {
         MovingOut
     }
 
-    private AngelStatus status = AngelStatus.MovingIn;
-    
+    private AngelStatus _status = AngelStatus.MovingIn;
+
     private void Start() {
         transform.position += _angelOffset;
         _animator = GetComponent<Animator>();
@@ -36,15 +35,15 @@ public class Angel : MonoBehaviour {
         _offset = _main.transform.position - transform.position;
         _offset.z = 0;
         _startTime = Time.time;
-        
+
         _startPosition = transform.position;
         _endPosition = _startPosition;
         _endPosition.x += 2;
         _endPosition.z = 0;
-        
+
         _journeyLength = Vector3.Distance(_startPosition, _endPosition);
         _spriteRenderer = GetComponent<SpriteRenderer>();
-         
+
         StartCoroutine(HandleState());
     }
 
@@ -54,16 +53,16 @@ public class Angel : MonoBehaviour {
         pos.x = p.x - 1.5f;
         pos.z = 0;
         pos += _angelOffset;
-        
+
         float distCovered = (Time.time - _startTime) * speed;
         float fracJourney = distCovered / _journeyLength;
         Vector3 endPos = Vector3.Lerp(_startPosition, pos, fracJourney);
         transform.position = endPos;
 
         if (Vector3.Distance(transform.position, pos) <= 0.1f) {
-            status = AngelStatus.Arrow;
+            _status = AngelStatus.Arrow;
             _animator.SetTrigger("Shoot");
-        }   
+        }
     }
 
     void MovingOut() { // TODO: Refactor This Lerp Into One Function For Both Moving in/out
@@ -73,41 +72,41 @@ public class Angel : MonoBehaviour {
         pos.x = p.x + 1.5f;
         pos.z = 0;
         pos += _angelOffset;
-        
+
         float distCovered = (Time.time - _startTime) * speed;
         float fracJourney = distCovered / _journeyLength;
         Vector3 endPos = Vector3.Lerp(_startPosition, pos, fracJourney);
-        
+
         transform.position = endPos;
-        
+
         if (Vector3.Distance(transform.position, pos) <= 0.1f) {
             Destroy(gameObject);
         }
     }
 
     void ShootArrow() {
-        Transform go = Instantiate(arrow, transform.position, Quaternion.identity).transform;
-        go.transform.LookAt(Boss._player.transform.position);
+        Transform go = Instantiate(_arrow, transform.position, Quaternion.identity).transform;
+        go.transform.LookAt(Boss.player.transform.position);
 
-        status = AngelStatus.MovingOut;
+        _status = AngelStatus.MovingOut;
         _startTime = Time.time;
         _startPosition = transform.position;
     }
 
     IEnumerator HandleState() {
-        AngelStatus lastStatus = status;
+        AngelStatus lastStatus = _status;
         while (true) {
-            if (status != lastStatus) {
+            if (_status != lastStatus) {
                 yield return new WaitForSeconds(2f);
-                lastStatus = status;
+                lastStatus = _status;
 
                 if (lastStatus == AngelStatus.MovingOut) {
                     _startTime = Time.time;
                     _startPosition = transform.position;
                 }
             }
-            
-            switch (status) {
+
+            switch (_status) {
                 case AngelStatus.MovingIn:
                     MovingIn();
                     break;
@@ -122,14 +121,14 @@ public class Angel : MonoBehaviour {
             }
 
             yield return new WaitForEndOfFrame();
-        } 
+        }
     }
-    
-    
+
+
     float ClampAngle(float angle, float from, float to) {
-        if(angle > 180) angle = 360 - angle;
+        if (angle > 180) angle = 360 - angle;
         angle = Mathf.Clamp(angle, from, to);
-        if(angle < 0) angle = 360 + angle;
+        if (angle < 0) angle = 360 + angle;
 
         return angle;
     }
