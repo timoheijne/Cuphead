@@ -7,6 +7,7 @@ RequireComponent(typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
 	public EventHandler OnJump;
+	public EventHandler OnLand;
 	
 	[SerializeField] private LayerMask jumpLayer;
 	
@@ -25,8 +26,10 @@ public class PlayerMovement : MonoBehaviour
 	{
 		get { return _xVelocity; }
 	}
+
+	private bool oldCanJump;
 	
-	void Start ()
+	void Awake ()
 	{
 		_rigid = GetComponent<Rigidbody2D>();
 		_pi = GetComponent<PlayerInput>();
@@ -34,9 +37,13 @@ public class PlayerMovement : MonoBehaviour
 	
 	void Update ()
 	{
+		if (CanJump && !oldCanJump && OnLand != null) OnLand(this, null);
+			
+		
 		if (_pi.Jump && CanJump && 
 		    !PlayerInput.jumpdelay) Jump();
 		Movement();
+		oldCanJump = CanJump;
 	}
 
 	public void Jump()

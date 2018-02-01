@@ -16,6 +16,8 @@ public class PlayerShooting : MonoBehaviour
 
 	private float _lastShooTime;
 	private const float SHOOT_TIME = 0.23f; // shoot every SHOOT_TIME second.
+	
+	public bool shooting { get; private set; }
 
 	private void Start()
 	{
@@ -30,7 +32,10 @@ public class PlayerShooting : MonoBehaviour
 		get { return Time.time > _lastShooTime + SHOOT_TIME;  }
 	}
 	
-	private void Update () {
+	private void Update ()
+	{
+		if (CanShoot) shooting = false;
+		
 		if (!CanShoot || !_playerInput.Shoot) return;
 
 		if(!limitedAmmoMode) Shoot();
@@ -53,10 +58,12 @@ public class PlayerShooting : MonoBehaviour
 			
 		GameObject _bullet = Instantiate(_projectile, _exitpoint.position, Quaternion.Euler(rotation));
 		Destroy(_bullet, 5);
+		
 
 		_lastShooTime = Time.time;
 
 		if (OnShoot != null) OnShoot(this, null);
 
+		shooting = true;
 	}
 }

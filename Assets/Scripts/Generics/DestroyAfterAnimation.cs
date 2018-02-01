@@ -22,10 +22,7 @@ public class DestroyAfterAnimation : MonoBehaviour
 		float seconds = _animator.GetCurrentAnimatorStateInfo(0).normalizedTime
 		                + _animator.GetCurrentAnimatorStateInfo(0).length;
 		
-		print(seconds);
-		
 		yield return new WaitForSeconds(seconds);
 		Destroy(gameObject, 0);
-		print("Destroyed bitch!");
 	}
 }

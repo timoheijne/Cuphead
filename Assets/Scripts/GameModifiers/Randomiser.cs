@@ -20,7 +20,6 @@ public class Randomiser : MonoBehaviour
 	
 	private Slotmachine _randomiser;
 	private GameObject _player;
-
 	
 	public Sprite CurrentSprite
 	{
@@ -31,7 +30,8 @@ public class Randomiser : MonoBehaviour
 	{
 		get { return _player ?? (_player = GameObject.FindGameObjectWithTag("Player")); }
 	}
-	
+
+	private bool update = false;
 
 	void Awake()
 	{
@@ -56,7 +56,8 @@ public class Randomiser : MonoBehaviour
 		int rnumber = GetRandomNumber();
 		RandomiseMod(GetRandomModifier(rnumber));
 		_currentSprite = ModifierSprites[rnumber];
-		_randomiser.StartSlotmachine(_currentSprite, _currentModifier.Name);
+		_randomiser.StartSlotmachine(_currentSprite, _currentModifier.Name, this);
+		Time.timeScale = 0;
 	}
 
 	void FillModifiers()
@@ -84,17 +85,30 @@ public class Randomiser : MonoBehaviour
 	{
 		if(_currentModifier != null) _currentModifier.DestroyMod(this);
 		_currentModifier = mod;
-		_currentModifier.StartMod(this);
+		update = false;
+	}
+
+	public void StartMod()
+	{
+		_currentModifier.InitMod(this);
+		update = true;
 	}
 
 	void Update()
 	{
-		if(_currentModifier != null) _currentModifier.UpdateMod(this);
+		if(_currentModifier != null && update) _currentModifier.UpdateMod(this);
 		
 #if UNITY_EDITOR
 		if (Input.GetKeyDown(KeyCode.Q))
 		{
 			RandomiseMod(GetRandomModifier(GetRandomNumber()));
+			_currentModifier.StartMod(this);
+		}
+
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			UnityEngine.SceneManagement.SceneManager.LoadScene(
+				UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
 		}
 #endif
 	}

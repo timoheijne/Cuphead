@@ -14,7 +14,7 @@ namespace GameModifiers.Modifiers
         private float timer = 0;
         private float jumpTime = 0.2f;
         private const float minJumpTime = 0.2f;
-        private const float maxJumpTime = 0.6f;
+        private const float maxJumpTime = 1.6f;
         
         public override void StartMod(Randomiser r)
         {

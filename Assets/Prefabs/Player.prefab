@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114662017790174628}
   - component: {fileID: 114417634322807260}
   - component: {fileID: 114429531153608010}
+  - component: {fileID: 114931247190355086}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -230,7 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpLayer:
     serializedVersion: 2
-    m_Bits: 4294967039
+    m_Bits: 4294965503
 --- !u!114 &114662017790174628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,6 +246,47 @@ MonoBehaviour:
   _projectile: {fileID: 1815219638090320, guid: a6b324b1fbca09949ae0b2894a2b21f0,
     type: 2}
   _exitpoint: {fileID: 4088008756768382}
+--- !u!114 &114931247190355086
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417838068737152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d231129a5528e4b83278145b0b84a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingLoop:
+  - {fileID: 8300000, guid: 58e71d6eb489cae4ab23a109f8c0dfcf, type: 3}
+  - {fileID: 8300000, guid: a59b04d37ab4d6241886e016a8cf4c5f, type: 3}
+  shootStart:
+  - {fileID: 8300000, guid: 6880b0aa72e72374c974e1af6896adcf, type: 3}
+  - {fileID: 8300000, guid: 20ece917d5afbe541b751d38b2e73338, type: 3}
+  jump:
+  - {fileID: 8300000, guid: a6ef42c80c27f084e9dc8814e44afea9, type: 3}
+  - {fileID: 8300000, guid: 5ec9523950550c74796d15b0d417c487, type: 3}
+  - {fileID: 8300000, guid: 57eed1acf11b9dd4f989394f182dcbef, type: 3}
+  land:
+  - {fileID: 8300000, guid: c5c7b9d969bf8bb46ab7b56bfef8b193, type: 3}
+  - {fileID: 8300000, guid: abd371e99872e7a4babe82bedc5d0e2e, type: 3}
+  projectileHit:
+  - {fileID: 8300000, guid: de295d182259f4049833af9a6f8476f2, type: 3}
+  - {fileID: 8300000, guid: c3270ef6fdbc32546b5c149d3c47b690, type: 3}
+  - {fileID: 8300000, guid: feee400303bae694cad83d96ceb4948d, type: 3}
+  - {fileID: 8300000, guid: d64e1f4b877b76645baa1f0795216ff8, type: 3}
+  - {fileID: 8300000, guid: 5bfe65c2ce18d4a40baad3190e116e32, type: 3}
+  - {fileID: 8300000, guid: 717bf09b44d0883488429f86c8b1ffd0, type: 3}
+  - {fileID: 8300000, guid: f8f09dc09fc39d74cb6157df80a9e1e4, type: 3}
+  - {fileID: 8300000, guid: 02bf2deae4673f94ea2a0d465b935bd6, type: 3}
+  - {fileID: 8300000, guid: 297d959922a31344795e64c11532060c, type: 3}
+  - {fileID: 8300000, guid: 7cf9502815399874aae6fcadee859b84, type: 3}
+  - {fileID: 8300000, guid: 5fbb376dadb09894fbd6f6e4b39ef7a1, type: 3}
+  - {fileID: 8300000, guid: e32c5b85c6c51024fa4f0a98ccc17ac4, type: 3}
+  - {fileID: 8300000, guid: f8c10c7d79645f64ebedfd83544af3a5, type: 3}
+  - {fileID: 8300000, guid: 5ab3bb5cfa87003488fab65a187e2b3a, type: 3}
+  - {fileID: 8300000, guid: 9b8cc978919c9d64c9576b70adf62a01, type: 3}
+  - {fileID: 8300000, guid: f529d5a81d45806499719781641265bb, type: 3}
 --- !u!114 &114956655533092344
 MonoBehaviour:
   m_ObjectHideFlags: 1

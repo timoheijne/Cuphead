@@ -13,10 +13,10 @@ namespace GameModifiers.Modifiers
         private GameObject _ammoKit;
         
 
-        private float ammoKitEvery = 2; // seconds
+        private float ammoKitEvery = 5; // seconds
         private float ammoKitLastSpawnTime;
 
-        private int currentAmmo = 100;
+        private int currentAmmo = 50;
 
         private List<GameObject> SpawnedAmmoKits;
         
@@ -54,11 +54,11 @@ namespace GameModifiers.Modifiers
                 Vector3 apos = ammokit.transform.position;
                 apos.z = 0;
                 float distance = (ppos - apos ).magnitude;
-                const float minDistance = 0.5f;
+                const float minDistance = 1f;
                 Debug.Log(distance);
                 if (distance > minDistance) continue;
                 
-                currentAmmo += 100;
+                currentAmmo += 25;
                 DeleteAmmoKit(ammokit);
                 break;
             }
