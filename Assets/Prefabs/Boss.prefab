@@ -419,6 +419,7 @@ MonoBehaviour:
   thunderStrike: {fileID: 1980074300322576, guid: d587851ed2db87e4bb8e307c7969ee0a,
     type: 2}
   angel: {fileID: 1558262050885510, guid: e18918a4c3be85644aecc0927496bba4, type: 2}
+  _angelOffset: {x: 0, y: 1.5, z: 0}
   state: 0
 --- !u!114 &114373790194720114
 MonoBehaviour:

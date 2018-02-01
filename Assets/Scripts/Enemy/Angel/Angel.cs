@@ -18,6 +18,8 @@ public class Angel : MonoBehaviour {
     private Animator _animator;
     
     [SerializeField] private GameObject arrow;
+    
+    [SerializeField] private Vector3 _angelOffset;
 
     enum AngelStatus {
         MovingIn,
@@ -28,6 +30,7 @@ public class Angel : MonoBehaviour {
     private AngelStatus status = AngelStatus.MovingIn;
     
     private void Start() {
+        transform.position += _angelOffset;
         _animator = GetComponent<Animator>();
         _main = Camera.main;
         _offset = _main.transform.position - transform.position;
@@ -50,11 +53,11 @@ public class Angel : MonoBehaviour {
         Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0, Camera.main.nearClipPlane));
         pos.x = p.x - 1.5f;
         pos.z = 0;
+        pos += _angelOffset;
         
         float distCovered = (Time.time - _startTime) * speed;
         float fracJourney = distCovered / _journeyLength;
         Vector3 endPos = Vector3.Lerp(_startPosition, pos, fracJourney);
-        
         transform.position = endPos;
 
         if (Vector3.Distance(transform.position, pos) <= 0.1f) {
@@ -69,6 +72,7 @@ public class Angel : MonoBehaviour {
         Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0, Camera.main.nearClipPlane));
         pos.x = p.x + 1.5f;
         pos.z = 0;
+        pos += _angelOffset;
         
         float distCovered = (Time.time - _startTime) * speed;
         float fracJourney = distCovered / _journeyLength;

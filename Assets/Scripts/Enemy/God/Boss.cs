@@ -91,6 +91,7 @@ public class Boss : MonoBehaviour {
         Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0, Camera.main.nearClipPlane));
         pos.x = p.x + 5;
         pos.z = 0;
+        
         GameObject go = Instantiate(angel, pos, Quaternion.identity);
         
         state = BossState.Idle;
