@@ -15,11 +15,12 @@ public class Health : MonoBehaviour {
 		get { return _health; }
 		set { _health = value; HazDedQuestionMark(); }
 	}
-
-	private bool deaded = false;
 	
 	public delegate void Died();
 	public Died HasDied;
+
+	[HideInInspector]
+	public bool dead = false;
 
 	void Start()
 	{
@@ -29,10 +30,10 @@ public class Health : MonoBehaviour {
 	private void HazDedQuestionMark()
 	{
 		// Purrfect naeming roight?
-		if (!(_health <= 0)) return;
-		if (HasDied == null || deaded) return;
+		if (_health > 0) return;
+		if (HasDied == null || dead) return;
 		HasDied();
-		deaded = true;
+		dead = true;
 	}
 
 	private void Damage()
@@ -51,7 +52,7 @@ public class Health : MonoBehaviour {
 
 	private void OnCollisionEnter2D(Collision2D other)
 	{
-		if (other.collider.CompareTag("Projectile"))
+		if (other.collider.tag == "Projectile")
 		{
 			Damage();
 			Destroy(other.gameObject);

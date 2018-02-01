@@ -22,8 +22,6 @@ public class LazerEyes : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_lineRenderer = GetComponent<LineRenderer>();
-
-		StartCoroutine(RunLaser());
 	}
 
 	public IEnumerator RunLaser() {

@@ -42,8 +42,8 @@ public class Boss : MonoBehaviour {
 
     private void HasDied()
     {
-        // Send message to boss handler
-        throw new NotImplementedException("WHAT THE FUCK!!!!!!!!!!!!!!!!!!! IMPOSSIBRUUUUUUUU"); 
+        state = BossState.Dead;
+        _bossAnimator.SetState(state);
     }
 
     private void Update() {

@@ -14,6 +14,7 @@ public class EnemyGate : MonoBehaviour {
 	
 	private GameObject _player;
 	private GateAnimation _animator;
+	private Health _health;
 
 	public bool isPlayerInSmashRadius = false; 
 
@@ -37,7 +38,15 @@ public class EnemyGate : MonoBehaviour {
 			_player = GameObject.FindGameObjectWithTag("Player");
 
 		_animator = GetComponent<GateAnimation>();
+		_health = GetComponent<Health>();
 		state = GateStatus.Idle;
+
+		_health.HasDied += OnDeath;
+	}
+
+	void OnDeath() {
+		state = GateStatus.Dead;
+		_animator.SetState(state);
 	}
 	
 	// Update is called once per frame

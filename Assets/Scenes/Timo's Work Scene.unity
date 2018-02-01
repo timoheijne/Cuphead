@@ -282,7 +282,7 @@ Transform:
   m_Children:
   - {fileID: 1763056372}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &637498616
 CapsuleCollider2D:
@@ -433,7 +433,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4321376192689900, guid: 1afabd90bbc1fcf4cad395e726f79bee, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1985780383048472, guid: 1afabd90bbc1fcf4cad395e726f79bee, type: 2}
       propertyPath: m_IsActive
@@ -479,7 +479,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4613468437685166, guid: f15e931ef4bc2c7428289f63af6da502, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1599158349375420, guid: f15e931ef4bc2c7428289f63af6da502, type: 2}
       propertyPath: m_IsActive
@@ -541,7 +541,7 @@ Transform:
   m_Children:
   - {fileID: 1149038402}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676434939
 GameObject:
@@ -614,7 +614,7 @@ Transform:
   m_LocalScale: {x: 1.8298522, y: 1.8298525, z: 1.8298525}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763056371
 GameObject:
@@ -769,7 +769,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1934909692
 MonoBehaviour:
@@ -782,3 +782,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c0dc31ab67a4ebd87281084bb247d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2119100786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2119100788}
+  - component: {fileID: 2119100787}
+  m_Layer: 0
+  m_Name: Death Explotion Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2119100787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2119100786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 966edcb86cd4413fb8bfe40c2a08cd64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effect: {fileID: 1108689127996252, guid: 3789ab16265e932489bfbf7be01c4b29, type: 2}
+--- !u!4 &2119100788
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2119100786}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0180668, y: 0.80299944, z: -0.01953125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -23,10 +23,10 @@ public class EnemyManager : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		SpawnEnemies();
 		if (EnemyManager.instance != null) {
 			Destroy(gameObject);
 		} else {
+			SpawnEnemies();
 			instance = this;
 			DontDestroyOnLoad(gameObject);
 		}
@@ -44,6 +44,10 @@ public class EnemyManager : MonoBehaviour {
 				enemy.healthScript.HasDied += RegisterDeath;
 			}
 		}
+		
+		if(enemies.Length > 0)
+			SetActiveEnemy(enemies[0]);
+		
 	}
 
 	public void SetMode(Gamemodes newMode) {
@@ -51,30 +55,52 @@ public class EnemyManager : MonoBehaviour {
 	}
 
 	private void RegisterDeath() {
+		Debug.Log("Death Registered");
 		activeEnemy.killed += 1;
 		for (int i = 0; i < enemies.Length; i++) {
+			Debug.Log(enemies[i].name);
 			if (enemies[i].name == activeEnemy.name) {
 				// Why don't we have IndexOf?
 				if (i == enemies.Length - 1) {
 					if (mode == Gamemodes.Normal) {
+						Debug.Log("Last Reached - Normal Mode");
 						// Reached last enemy.. We done boi
 						activeEnemy.activeGameObject.SetActive(false);
+						
 					} else {
+						Debug.Log("Roight Next one");
+
 						SetActiveEnemy(enemies[0]);
 					}
 				} else {
+					Debug.Log("Roight Next one");
 					SetActiveEnemy(enemies[i+1]);
 				}
+
+				break;
 			}
 		}
 	}
 
 	private void SetActiveEnemy(Enemy enemy) {
+		if (activeEnemy != null) StartCoroutine(DisableObject(activeEnemy)); // We do this so we can allow some animations & explosions or whatever
+
+		StartCoroutine(ActivateObject(enemy));
+	}
+
+	IEnumerator DisableObject(Enemy enemy) {
+		yield return new WaitForSeconds(2f);
+		DeathExplosionSpawner.instance.SpawnAtPoint(activeEnemy.activeGameObject.transform.position);
 		activeEnemy.activeGameObject.SetActive(false);
+	}
+
+	IEnumerator ActivateObject(Enemy enemy) {
+		yield return new WaitForSeconds(2.5f);
+		
 		activeEnemy = enemy;
 		activeEnemy.healthScript.CurHealth = activeEnemy.health;
+		activeEnemy.healthScript.dead = false;
 		activeEnemy.activeGameObject.SetActive(true);
-		
 	}
 
 	public void ResetStats() {
