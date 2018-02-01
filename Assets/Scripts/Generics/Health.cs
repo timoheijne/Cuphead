@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class Health : MonoBehaviour {
 
+	[Tooltip("Set the health of this object. This does not indicate max health but current health.. There is no max")]
 	[SerializeField]
 	private float _health = 100;
 	private SpriteRenderer sprite;

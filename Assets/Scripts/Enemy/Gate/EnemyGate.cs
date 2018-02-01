@@ -3,23 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Created by Timo Heijne
+/// <summary>
+/// Here we decide what attack the gate should do, we also handle what should happen when the gate is ded
+/// </summary>
 [RequireComponent(typeof(GateAnimation))]
 public class EnemyGate : MonoBehaviour {
 
 
 	public GameObject trashObject;
-	public GameObject spikeObject;
 	
 	private GameObject _player;
 	private GateAnimation _animator;
 
-	private bool isPlayerInSmashRadius = false; 
+	public bool isPlayerInSmashRadius = false; 
 
 	public enum GateStatus {
 		Spikes,
 		Trash,
 		Smash,
-		SmashRecover,
 		Idle,
 		Dead
 	}
@@ -80,8 +81,8 @@ public class EnemyGate : MonoBehaviour {
 
 	void AttackSmash() {
 		if (isPlayerInSmashRadius) {
-			// SMASHING WENT HAPPEN AND STUFF
 			Debug.Log("EnemyGate :: Player Hit");
+			_player.GetComponent<PlayerHealth>().TakeDamage();
 		}
 		StartCoroutine(WaitForRecoverTime());
 	}
@@ -99,24 +100,7 @@ public class EnemyGate : MonoBehaviour {
 		Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0, Camera.main.nearClipPlane));
 		pos.x = p.x + 5;
 		pos.z = 0;
-		
+
 		GameObject go = Instantiate(trashObject, pos, trashObject.transform.rotation);
-	}
-
-	void AttackSpike() {
-		// Make the gate shit a spike
-		
-	}
-
-	private void OnTriggerEnter2D(Collider2D other) {
-		if (other.CompareTag("Player")) {
-			isPlayerInSmashRadius = true;
-		}
-	}
-
-	private void OnTriggerExit2D(Collider2D other) {
-		if (other.CompareTag("Player")) {
-			isPlayerInSmashRadius = false;
-		}
 	}
 }
