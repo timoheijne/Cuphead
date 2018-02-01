@@ -1,10 +1,14 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D)),
 RequireComponent(typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
+	public EventHandler OnJump;
+	public EventHandler OnLand;
+	
 	[SerializeField] private LayerMask jumpLayer;
 	
 	private Rigidbody2D _rigid;
@@ -17,8 +21,15 @@ public class PlayerMovement : MonoBehaviour
 	private const float JumpPower = 10f;
 
 	private float _xVelocity;
+
+	public float XVelocity
+	{
+		get { return _xVelocity; }
+	}
+
+	private bool oldCanJump;
 	
-	void Start ()
+	void Awake ()
 	{
 		_rigid = GetComponent<Rigidbody2D>();
 		_pi = GetComponent<PlayerInput>();
@@ -26,37 +37,46 @@ public class PlayerMovement : MonoBehaviour
 	
 	void Update ()
 	{
+		if (CanJump && !oldCanJump && OnLand != null) OnLand(this, null);
+			
+		
+		if (_pi.Jump && CanJump && 
+		    !PlayerInput.jumpdelay) Jump();
 		Movement();
-		if (_pi.Jump && CanJump) Jump();
+		oldCanJump = CanJump;
 	}
 
-	void Jump()
+	public void Jump()
 	{
 		var vel = _rigid.velocity;
 		vel.y = JumpPower;
 		_rigid.velocity = vel;
+		if (OnJump != null) OnJump(this, null);
 	}
 
-	private bool CanJump
+	public bool CanJump
 	{
 		get
-		{
-			Vector3[] rayorigins = new Vector3[]
+		{	
+			var rayorigins = new Vector3[]
 			{
-				transform.position + new Vector3(-0.5f, -0.5f),
-				transform.position + new Vector3(0.5f, -0.5f)
+				transform.position + new Vector3(-0.5f, -0.45f),
+				transform.position + new Vector3(0.5f, -0.45f)
 			};
 
-			return rayorigins.Any(rayorigin => Physics2D.Raycast(rayorigin, Vector3.down, 0.2f, jumpLayer));
+			return rayorigins.Any(rayorigin => Physics2D.Raycast(rayorigin, Vector3.down, 1f, jumpLayer).collider != null);
 		}
 	}
 
 	void Movement()
-	{
+	{	
 		var velocity = _rigid.velocity;
 		int sign = _pi.MoveDirection;
 		_xVelocity = HorizontalMove(sign, _xVelocity);
 		velocity.x = _xVelocity;
+		
+		if (_pi.InterruptMoveKey) velocity.x = 0;
+
 		_rigid.velocity = velocity;
 	}
 

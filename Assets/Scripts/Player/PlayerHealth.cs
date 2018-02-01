@@ -30,7 +30,7 @@ public class PlayerHealth : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
-		_sr = GetComponent<SpriteRenderer>();
+		_sr = GetComponentInChildren<SpriteRenderer>();
 	}
 
 	public void TakeDamage() {
