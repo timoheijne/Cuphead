@@ -113,6 +113,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &603732246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 603732248}
+  - component: {fileID: 603732247}
+  m_Layer: 0
+  m_Name: Enemy Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &603732247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 603732246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c99821557df23e4eb4ddf4d5ad5005c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - name: Gate
+    prefab: {fileID: 1985780383048472, guid: 1afabd90bbc1fcf4cad395e726f79bee, type: 2}
+    health: 100
+    killed: 0
+    healthScript: {fileID: 0}
+    activeGameObject: {fileID: 0}
+  - name: Boss
+    prefab: {fileID: 1599158349375420, guid: f15e931ef4bc2c7428289f63af6da502, type: 2}
+    health: 150
+    killed: 0
+    healthScript: {fileID: 0}
+    activeGameObject: {fileID: 0}
+  mode: 0
+--- !u!4 &603732248
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 603732246}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.759017, y: -0.018512793, z: 0.016658137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &637498610
 GameObject:
   m_ObjectHideFlags: 0
@@ -228,7 +282,7 @@ Transform:
   m_Children:
   - {fileID: 1763056372}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &637498616
 CapsuleCollider2D:
@@ -379,7 +433,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4321376192689900, guid: 1afabd90bbc1fcf4cad395e726f79bee, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1985780383048472, guid: 1afabd90bbc1fcf4cad395e726f79bee, type: 2}
       propertyPath: m_IsActive
@@ -425,12 +479,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4613468437685166, guid: f15e931ef4bc2c7428289f63af6da502, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114350344194938914, guid: f15e931ef4bc2c7428289f63af6da502,
-        type: 2}
-      propertyPath: _angelOffset.y
-      value: 5.11
+    - target: {fileID: 1599158349375420, guid: f15e931ef4bc2c7428289f63af6da502, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f15e931ef4bc2c7428289f63af6da502, type: 2}
@@ -488,7 +541,7 @@ Transform:
   m_Children:
   - {fileID: 1149038402}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1676434939
 GameObject:
@@ -500,7 +553,7 @@ GameObject:
   - component: {fileID: 1676434941}
   - component: {fileID: 1676434940}
   m_Layer: 0
-  m_Name: background_temporary
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,7 +614,7 @@ Transform:
   m_LocalScale: {x: 1.8298522, y: 1.8298525, z: 1.8298525}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1763056371
 GameObject:
@@ -716,7 +769,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1934909692
 MonoBehaviour:

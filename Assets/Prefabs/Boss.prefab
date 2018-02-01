@@ -78,6 +78,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1617841156824144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4099313273464310}
+  m_Layer: 10
+  m_Name: Thunder Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1630701557211798
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,6 +153,19 @@ Transform:
   m_Father: {fileID: 4623883402203090}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4099313273464310
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617841156824144}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4613468437685166}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4147562715298686
 Transform:
   m_ObjectHideFlags: 1
@@ -178,6 +206,7 @@ Transform:
   m_Children:
   - {fileID: 4623883402203090}
   - {fileID: 4147562715298686}
+  - {fileID: 4099313273464310}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -419,7 +448,7 @@ MonoBehaviour:
   thunderStrike: {fileID: 1980074300322576, guid: d587851ed2db87e4bb8e307c7969ee0a,
     type: 2}
   angel: {fileID: 1558262050885510, guid: e18918a4c3be85644aecc0927496bba4, type: 2}
-  _angelOffset: {x: 0, y: 1.5, z: 0}
+  _thunderThrowPoint: {fileID: 4099313273464310}
   state: 0
 --- !u!114 &114373790194720114
 MonoBehaviour:
@@ -462,7 +491,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0c630148dc9f2d45ad4f5a61bc571b6, type: 2}
+  - {fileID: 2100000, guid: 60ab9667f3a14744fa438fe9c599f3ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -556,7 +585,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: a0c630148dc9f2d45ad4f5a61bc571b6, type: 2}
+  - {fileID: 2100000, guid: 60ab9667f3a14744fa438fe9c599f3ef, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -16,6 +16,9 @@ public class Boss : MonoBehaviour {
     private BossAnimator _bossAnimator;
 
     private float _attackTimer = 5;
+    
+    [SerializeField]
+    private Transform _thunderThrowPoint;
 
     public enum BossState {
         Idle,
@@ -78,11 +81,7 @@ public class Boss : MonoBehaviour {
     }
 
     private void ThunderStrike() {
-        Vector3 pos = _player.transform.position;
-        Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(0, Camera.main.pixelHeight, Camera.main.nearClipPlane));
-        pos.y = p.y;
-        GameObject go = Instantiate(thunderStrike, pos, Quaternion.identity);
-        
+        GameObject go = Instantiate(thunderStrike, _thunderThrowPoint.position, Quaternion.identity);        
         state = BossState.Idle;
     }
 
