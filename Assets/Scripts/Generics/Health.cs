@@ -35,7 +35,7 @@ public class Health : MonoBehaviour {
 
     private void HazDedQuestionMark() {
         // Purrfect naeming roight?
-        if (_health > 0) return;
+        if (CurHealth > 0) return;
         if (HasDied == null || dead) return;
         HasDied();
         dead = true;

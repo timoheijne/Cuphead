@@ -78,16 +78,16 @@ public class EnemyManager : MonoBehaviour {
                 // Why don't we have IndexOf?
                 if (i == enemies.Length - 1) {
                     if (mode == Gamemodes.Normal) {
-                        Debug.Log("Last Reached - Normal Mode");
+                        Debug.Log(enemies[i].name + " - Normal Mode - Last Reached");
                         // Reached last enemy.. We done boi
                         StartCoroutine(GameWon(_activeEnemy));
                     } else {
-                        Debug.Log("Roight Next one");
+                        Debug.Log(enemies[i].name + " - Crazy Mode - Last One So Go Back To First");
 
                         SetActiveEnemy(enemies[0]);
                     }
                 } else {
-                    Debug.Log("Roight Next one");
+                    Debug.Log(enemies[i].name + " - Not Last One Continue To Next One");
                     SetActiveEnemy(enemies[i + 1]);
                 }
 
