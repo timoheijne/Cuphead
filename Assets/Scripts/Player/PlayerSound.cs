@@ -8,7 +8,7 @@ public class PlayerSound : MonoBehaviour
 	[SerializeField] private AudioClip[] jump;
 	[SerializeField] private AudioClip[] land;
 	[SerializeField] private AudioClip[] projectileHit;
-	private AudioSource a_shootingLoop;
+	public AudioSource a_shootingLoop;
 	private AudioSource a_soundeffects;
 	private bool wasShooting;
 

@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour {
 	
-	private static float Speed = 10f;
+	public static float Speed = 10f;
+	public static bool shortLifeSpan = false;
 
 	private float lifetime = 0;
 
@@ -23,7 +24,12 @@ public class Projectile : MonoBehaviour {
 		// I'm sorry, this is a hack so that the destruction sound does not play if the object is destroyed...
 
 		lifetime += Time.deltaTime;
-		if (lifetime > 4f) execute = false;
+		if (lifetime > 4f && !shortLifeSpan) execute = false;
+		else if (shortLifeSpan && lifetime > 1)
+		{
+			execute = false;
+			Destroy(gameObject);
+		}
 		
 		
 #if UNITY_EDITOR

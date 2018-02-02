@@ -42,6 +42,7 @@ public class Randomiser : MonoBehaviour
 		FillModifiers();
 		DontDestroyOnLoad(gameObject);
 		SceneManager.sceneLoaded += SceneLoaded;
+		MenuButtons.CrazyMode = true;
 	}
 
 	private void SceneLoaded(Scene arg0, LoadSceneMode loadSceneMode)
@@ -72,7 +73,10 @@ public class Randomiser : MonoBehaviour
 			new InvertedControlsModifier("INVERTED CONTROLS"),
 			new JumpDelayModifier("JUMP DELAY"),
 			new CoolModeModifier("COOL MODE"),
-			new LimitedAmmoModifier("LIMITED AMMO")
+			new LimitedAmmoModifier("LIMITED AMMO"),
+			new LowRangeModifier("LOW RANGE"),
+			new MoreDamageModifier("EXTRA DAMAGE!"),
+			new FasterBulletsModifier("QUICK BULLETS"),
 		};
 
 		ModifierSprites = new List<Sprite>()
@@ -81,7 +85,11 @@ public class Randomiser : MonoBehaviour
 			Resources.Load<Sprite>("inverted controls"),
 			Resources.Load<Sprite>("jump delay"),
 			Resources.Load<Sprite>("cool mode"),
-			Resources.Load<Sprite>("limited bullets")
+			Resources.Load<Sprite>("limited bullets"),
+			Resources.Load<Sprite>("kleine range"),
+			Resources.Load<Sprite>("meer damga"),
+			Resources.Load<Sprite>("snelle kogels"),
+
 		};
 	}
 	

@@ -9,6 +9,8 @@ public class Health : MonoBehaviour {
     [SerializeField]
     private float _health = 100;
 
+    public static float DamageTaken = 1;
+
     private SpriteRenderer sprite;
 
     public float CurHealth {
@@ -39,7 +41,7 @@ public class Health : MonoBehaviour {
 
     private void Damage() {
         StartCoroutine(Blink());
-        CurHealth -= 5;
+        CurHealth -= DamageTaken;
     }
 
     private IEnumerator Blink() {

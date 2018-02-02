@@ -17,7 +17,7 @@ public class PlayerShooting : MonoBehaviour
 	private PlayerInput _playerInput;
 
 	private float _lastShooTime;
-	private const float SHOOT_TIME = 0.23f; // shoot every SHOOT_TIME second.
+	public static float SHOOT_TIME = 0.23f; // shoot every SHOOT_TIME second.
 	
 	public bool shooting { get; private set; }
 

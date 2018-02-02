@@ -26,6 +26,7 @@ public class Slotmachine : MonoBehaviour
 	{
 		Time.timeScale = 0;
 		_currentModifier = mod;
+		_canvas.gameObject.SetActive(true);
 
 		foreach (var icon in _icons)
 		{
@@ -86,13 +87,11 @@ public class Slotmachine : MonoBehaviour
 		_modifierText.rectTransform.eulerAngles =
 			new Vector3(0,0,36);
 
-		_canvas.gameObject.SetActive(true);
 		_modifierText.gameObject.SetActive(true);
 
 		yield return new WaitForSecondsRealtime(2.0f);
 
 		showText = false;
-		_canvas.gameObject.SetActive(true);
 		_modifierText.gameObject.SetActive(true);
 		
 		Time.timeScale = 1;

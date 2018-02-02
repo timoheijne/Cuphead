@@ -25,6 +25,11 @@ public class PlayerInput : MonoBehaviour
         }
     }
 
+    public bool DownPressed
+    {
+        get { return Input.GetKey(KeyCode.DownArrow); }
+    }
+
     public bool InterruptMoveKey
     {
         get { return Input.GetKey(KeyCode.C); }
@@ -40,6 +45,8 @@ public class PlayerInput : MonoBehaviour
     private void Update()
     {
         if (MoveDirection != 0) LastFacingDirection = MoveDirection;
+        if (Input.GetKeyDown(KeyCode.Escape))
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public bool Shoot

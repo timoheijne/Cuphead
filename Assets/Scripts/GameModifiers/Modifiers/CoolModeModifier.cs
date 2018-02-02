@@ -54,7 +54,9 @@ namespace GameModifiers.Modifiers
             var source = obj.AddComponent<AudioSource>();
             source.PlayOneShot(_explosionSound, 0.5f);
             Object.Destroy(obj, 2);
-            shakeStrength += shakeStrengthPerHit;
+            
+            if(shakeStrength < 0.8f)
+                shakeStrength += shakeStrengthPerHit;
         }
 
         public override void UpdateMod(Randomiser r)
@@ -63,7 +65,8 @@ namespace GameModifiers.Modifiers
             {
                 shakeStrength -= shakeStrengthDecay * Time.deltaTime;
                 _rgbSplit.offset = _originalRGBSplitStrength + shakeStrength * 10;
-                Camera.main.transform.position = originalCamPos + (Vector3)Random.insideUnitCircle * shakeStrength;
+                Camera.main.transform.position = originalCamPos + (Vector3)Random.insideUnitCircle * 
+                                                 Mathf.Clamp(shakeStrength, 0, 0.6f);
             }
             else
             {
