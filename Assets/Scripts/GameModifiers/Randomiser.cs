@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using GameModifiers.Modifiers;
+using Stepper.Highscores;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -46,6 +47,8 @@ public class Randomiser : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 		SceneManager.sceneLoaded += SceneLoaded;
 		MenuButtons.CrazyMode = true;
+		
+		Debug.Log(HighscoreManager.GetHighscores().Count);
 
 		// oops, this is dumb!
 		Health.OnHit += (a,e) => { PlayerHealth.points += (int) Health.DamageTaken; };

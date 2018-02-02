@@ -29,7 +29,7 @@ public class HighscoreCanvas : MonoBehaviour
 			for (int i = 0; i < highscores.Count; i++)
 			{
 				var highscore = highscores[i];
-				_highScoreText.text += string.Format("#{0}: {1} \t {2}dmg\n", 
+				_highScoreText.text += string.Format("#{0}: {1} \t - {2}dmg\n", 
 					i + 1, highscore.Name, highscore.Points);
 			}
 		}
@@ -50,10 +50,10 @@ public class HighscoreCanvas : MonoBehaviour
 
 	public void Submit()
 	{
-		if (string.IsNullOrEmpty(_nameField.name)) return;
+		if (string.IsNullOrEmpty(_nameField.text)) return;
 
-		int length = _nameField.name.Length < 13 ? _nameField.name.Length : 12;
-		Highscore highscore = new Highscore(_nameField.name.Substring(0,length), points);
+		int length = _nameField.text.Length < 13 ? _nameField.text.Length : 12;
+		Highscore highscore = new Highscore(_nameField.text.Substring(0,length), points);
 
 		HighscoreManager.GetHighscoreRank(highscore, true);
 		Back();

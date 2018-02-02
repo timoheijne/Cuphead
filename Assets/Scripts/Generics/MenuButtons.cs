@@ -50,9 +50,8 @@ public class MenuButtons : MonoBehaviour
         var operation = SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
         operation.allowSceneActivation = false;
 
-        while (operation.progress < 0.89f)
+        while (operation.progress < 0.9f)
         {
-            print("Loading: " + (operation.progress*100));
             yield return null;
         }
 
@@ -67,9 +66,8 @@ public class MenuButtons : MonoBehaviour
         var operation = SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
         operation.allowSceneActivation = false;
 
-        while (operation.progress < 0.89f)
+        while (operation.progress < 0.9f)
         {
-            print("Loading: " + (operation.progress*100));
             yield return null;
         }
 

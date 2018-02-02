@@ -25,9 +25,9 @@ public class PlayerSound : MonoBehaviour
 		pm = GetComponent<PlayerMovement>();
 		a_shootingLoop = gameObject.AddComponent<AudioSource>();
 		a_soundeffects = gameObject.AddComponent<AudioSource>();
-		pm.OnJump += (s, e) => { a_soundeffects.PlayOneShot(GetRandomClip(jump)); };
-		pm.OnLand += (s, e) => { a_soundeffects.PlayOneShot(GetRandomClip(land)); };
-		Projectile.OnProjectileHit += (v) => { a_shootingLoop.PlayOneShot(GetRandomClip(projectileHit)); };
+		pm.OnJump += (s, e) => { if(a_soundeffects != null) a_soundeffects.PlayOneShot(GetRandomClip(jump)); };
+		pm.OnLand += (s, e) => { if(a_soundeffects != null) a_soundeffects.PlayOneShot(GetRandomClip(land)); };
+		Projectile.OnProjectileHit += (v) => { if(a_shootingLoop != null) a_shootingLoop.PlayOneShot(GetRandomClip(projectileHit)); };
 
 		if(!MenuButtons.CrazyMode) MusicManager.Instance.PlayNormalMusic();
 	}

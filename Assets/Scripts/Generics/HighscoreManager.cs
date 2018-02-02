@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
+using UnityEngine;
 
 namespace Stepper.Highscores
 {
@@ -14,12 +17,12 @@ namespace Stepper.Highscores
         /// write -1 to retrieve all.</param>
         /// <returns>A list populated with the high scores.</returns>
         public static List<Highscore> GetHighscores(int limit = 10)
-        {
+        {            
             var raw_json = UnityEngine.PlayerPrefs.GetString(playerPrefsName, "empty");
 
             if (raw_json.Equals("empty")) return null;
             
-            var list = UnityEngine.JsonUtility.FromJson<List<Highscore>>(raw_json)
+            var list = UnityEngine.JsonUtility.FromJson<HighscoreList>(raw_json).highscores
                 .OrderByDescending(x=>x.Points).ToList();
 
             return limit == -1 ? list : list.Take(limit).ToList();
@@ -39,11 +42,11 @@ namespace Stepper.Highscores
             {
                 var highscores = new List<Highscore>();
                 highscores.Add(highscore);
-                SaveList(highscores);
+                if(save) SaveList(highscores);
                 return 1;
             }
 
-            var list = UnityEngine.JsonUtility.FromJson<List<Highscore>>(raw_json);
+            var list = UnityEngine.JsonUtility.FromJson<HighscoreList>(raw_json).highscores.ToList();
             list.Add(highscore);
             var ordered = list.OrderByDescending(x => x.Points).ToList();
             
@@ -53,21 +56,34 @@ namespace Stepper.Highscores
 
         private static void SaveList(List<Highscore> list)
         {
-            var json = UnityEngine.JsonUtility.ToJson(list);
-            UnityEngine.PlayerPrefs.SetString(playerPrefsName, json);
+            HighscoreList hl = new HighscoreList(list);
+            var json = JsonUtility.ToJson(hl);
+            PlayerPrefs.SetString(playerPrefsName, json);
+            PlayerPrefs.Save();
         }
     }
 
-    [System.Serializable]
+    [Serializable]
     public class Highscore
     {
-        public string Name { get; private set; }
-        public int Points { get; private set; }
+        public string Name;
+        public int Points;
 
         public Highscore(string name, int points)
         {
             Name = name;
             this.Points = points;
+        }
+    }
+
+    [Serializable]
+    public class HighscoreList
+    {
+        public Highscore[] highscores;
+
+        public HighscoreList(List<Highscore> l)
+        {
+            highscores = l.ToArray();
         }
     }
 }
