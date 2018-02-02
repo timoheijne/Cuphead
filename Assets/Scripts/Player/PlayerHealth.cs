@@ -8,7 +8,6 @@ using UnityEngine.UI;
 /// Keep track of Cupheads health since he uses another health method than the enemy... Cuphead uses hearts the enemies use normal hp.
 /// </summary>
 public class PlayerHealth : MonoBehaviour {
-    private SpriteRenderer _sr;
     private float _lastDamage;
     [SerializeField] private float _minCooldown = 5;
 
@@ -20,6 +19,7 @@ public class PlayerHealth : MonoBehaviour {
     public Died HasDied;
 
     [SerializeField] private Image uiHealthImage;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private Sprite oneHP;
     [SerializeField] private Sprite twoHP;
@@ -27,7 +27,6 @@ public class PlayerHealth : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        _sr = GetComponent<SpriteRenderer>();
         _lastDamage = Time.time;
     }
 
@@ -61,10 +60,10 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     private IEnumerator Blink() {
-        Color c = _sr.color;
-        _sr.color = new Color(0.8f, c.g, c.b, c.a);
+        Color c = _spriteRenderer.color;
+        _spriteRenderer.color = new Color(0.8f, c.g, c.b, c.a);
         yield return new WaitForSeconds(0.05f);
-        _sr.color = c;
+        _spriteRenderer.color = c;
     }
 
     private void OnParticleCollision(GameObject other) { // This is for the paper & key attack 'n shit
@@ -72,7 +71,7 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Spike")) {
+        if (other.CompareTag("Spike") || other.CompareTag("lightningStrike") || other.CompareTag("Paper Hit") || other.CompareTag("Arrow")) {
             TakeDamage();
         }
     }
