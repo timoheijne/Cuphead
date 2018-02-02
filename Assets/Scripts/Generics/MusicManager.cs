@@ -33,6 +33,7 @@ public class MusicManager : MonoBehaviour
     {
         audioSource.Stop();
         audioSource.clip = normalSongs[Random.Range(0, normalSongs.Length)];
+        audioSource.volume = 1;
         audioSource.Play();
     }
 
@@ -40,6 +41,7 @@ public class MusicManager : MonoBehaviour
     {
         audioSource.Stop();
         audioSource.clip = coolSong;
+        audioSource.volume = 0.8f;
         audioSource.time = 2;
         audioSource.Play();
     }

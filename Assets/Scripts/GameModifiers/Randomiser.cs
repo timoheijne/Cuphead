@@ -57,7 +57,7 @@ public class Randomiser : MonoBehaviour
 	{
 		// roll the slot machine, reset player position.... yep.
 		RollSlotMachine();
-		PLAYER.GetComponent<PlayerHealth>().Reset();
+		
 		PLAYER.GetComponent<PlayerSound>().StopSounds();
 		PLAYER.transform.position = originalPlayerPosition;
 		MusicManager.Instance.Stop();
