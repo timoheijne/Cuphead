@@ -4,6 +4,10 @@ using System.Diagnostics;
 using UnityEngine;
 
 // Created By Timo Heijne
+
+/// <summary>
+/// Here we keep track of what attack the boss (god) should do.
+/// </summary>
 [RequireComponent(typeof(BossAnimator))]
 public class Boss : MonoBehaviour {
     public LazerEyes[] laserEyes;

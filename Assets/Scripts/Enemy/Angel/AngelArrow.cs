@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Created By Timo Heijne
+/// <summary>
+/// Angel Arrow.....
+/// </summary>
 public class AngelArrow : MonoBehaviour {
     public float speed = 5;
 
