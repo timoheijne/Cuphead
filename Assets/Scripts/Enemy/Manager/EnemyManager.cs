@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using NUnit.Framework.Internal;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 /// Created By Timo Heijne
 /// <summary>
@@ -20,6 +23,8 @@ public class EnemyManager : MonoBehaviour {
     }
 
     public Gamemodes mode = Gamemodes.Normal;
+
+    public static UnityAction onGameWon;
 
     // Use this for initialization
     void Start() {
@@ -64,6 +69,7 @@ public class EnemyManager : MonoBehaviour {
                         Debug.Log("Last Reached - Normal Mode");
                         // Reached last enemy.. We done boi
                         _activeEnemy.activeGameObject.SetActive(false);
+                        if (onGameWon != null) onGameWon();
                     } else {
                         Debug.Log("Roight Next one");
 
@@ -102,10 +108,16 @@ public class EnemyManager : MonoBehaviour {
         _activeEnemy.activeGameObject.SetActive(true);
     }
 
+    public void SpawnFirstEnemy() {
+        StartCoroutine(ActivateObject(enemies[0]));
+    }
+
     public void ResetStats() {
         foreach (var enemy in enemies) {
             enemy.killed = 0;
             enemy.healthScript.CurHealth = enemy.health;
         }
     }
+    
+    
 }
