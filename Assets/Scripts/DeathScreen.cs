@@ -11,6 +11,7 @@ public class DeathScreen : MonoBehaviour {
 
 	private GameObject _player;
 	[SerializeField] private Slider _percentageSlider;
+	[SerializeField] private Text _progressText;
 
 	void Awake() {
 		EnemyManager.onGameWon += OnGameWon;
@@ -46,9 +47,6 @@ public class DeathScreen : MonoBehaviour {
 		if (EnemyManager.instance.mode == EnemyManager.Gamemodes.Normal) {
 			SceneManager.LoadScene("Timo's Work Scene");
 		}
-		else {
-			// Some logic for antiono to put here 'n stuff
-		}
 	}
 
 	public void Quit() {
@@ -66,5 +64,19 @@ public class DeathScreen : MonoBehaviour {
 
 		float percentage = (100 / totalHealth * totalDamageDone) / 100;
 		_percentageSlider.value = percentage;
+
+		if (percentage <= 0f) {
+			_progressText.text = "You are a disappointment";
+		} else if (percentage <= 0.25f) {
+			_progressText.text = "Is this all you can do?";
+		} else if (percentage <= 0.50f) {
+			_progressText.text = "Cmon man my grandma can do better";
+		} else if (percentage <= 0.75f) {
+			_progressText.text = "Nearly There";
+		} else if (percentage < 1f) {
+			_progressText.text = "Nearly There x2";
+		} else if (percentage >= 1f) {
+			_progressText.text = "You've Made It";
+		}		
 	}
 }
