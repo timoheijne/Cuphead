@@ -1,4 +1,4 @@
-﻿Shader "Custom/RGBSplit"
+﻿Shader "idiot/RGBSplit"
 {
 	Properties
 	{
