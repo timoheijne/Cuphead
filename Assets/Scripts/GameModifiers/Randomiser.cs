@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using GameModifiers.Modifiers;
+using Stepper.Highscores;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -36,21 +37,49 @@ public class Randomiser : MonoBehaviour
 	}
 
 	private bool update = false;
+	private Vector3 originalPlayerPosition;
+	
+	public static int points = 0;
 
 	void Awake()
 	{
 		FillModifiers();
 		DontDestroyOnLoad(gameObject);
 		SceneManager.sceneLoaded += SceneLoaded;
+		MenuButtons.CrazyMode = true;
+		
+		Debug.Log(HighscoreManager.GetHighscores().Count);
+
+		// oops, this is dumb!
+		Health.OnHit += (a,e) => { PlayerHealth.points += (int) Health.DamageTaken; };
+	}
+
+	private void OnBossKilled(Enemy enemy)
+	{
+		// roll the slot machine, reset player position.... yep.
+		RollSlotMachine();
+		PLAYER.GetComponent<PlayerHealth>().Reset();
+		PLAYER.transform.position = originalPlayerPosition;
 	}
 
 	private void SceneLoaded(Scene arg0, LoadSceneMode loadSceneMode)
 	{
+		if (arg0.buildIndex == 0) Destroy(gameObject);
 		if (arg0.buildIndex != 1) return;
+
+		print("hello");
+		
+		var bossmanagerspawner = EnemyManager.instance;
+		bossmanagerspawner.mode = EnemyManager.Gamemodes.Crazy;
+		EnemyManager.OnBossKilled += OnBossKilled;
 
 		_slotMachine = Resources.Load<GameObject>("slotmachine");
 		_randomiser = Instantiate(_slotMachine, new Vector3(0, 0, -8), Quaternion.identity)
 			.GetComponent<Slotmachine>();
+
+		originalPlayerPosition = PLAYER.transform.position;
+
+		PlayerHealth.points = 0;
 		
 		RollSlotMachine();
 	}
@@ -60,6 +89,7 @@ public class Randomiser : MonoBehaviour
 		int rnumber = GetRandomNumber();
 		RandomiseMod(GetRandomModifier(rnumber));
 		_currentSprite = ModifierSprites[rnumber];
+		_randomiser.gameObject.SetActive(true);
 		_randomiser.StartSlotmachine(_currentSprite, _currentModifier.Name, this);
 		Time.timeScale = 0;
 	}
@@ -72,7 +102,10 @@ public class Randomiser : MonoBehaviour
 			new InvertedControlsModifier("INVERTED CONTROLS"),
 			new JumpDelayModifier("JUMP DELAY"),
 			new CoolModeModifier("COOL MODE"),
-			new LimitedAmmoModifier("LIMITED AMMO")
+			new LimitedAmmoModifier("LIMITED AMMO"),
+			new LowRangeModifier("LOW RANGE"),
+			new MoreDamageModifier("EXTRA DAMAGE!"),
+			new FasterBulletsModifier("QUICK BULLETS"),
 		};
 
 		ModifierSprites = new List<Sprite>()
@@ -81,7 +114,11 @@ public class Randomiser : MonoBehaviour
 			Resources.Load<Sprite>("inverted controls"),
 			Resources.Load<Sprite>("jump delay"),
 			Resources.Load<Sprite>("cool mode"),
-			Resources.Load<Sprite>("limited bullets")
+			Resources.Load<Sprite>("limited bullets"),
+			Resources.Load<Sprite>("kleine range"),
+			Resources.Load<Sprite>("meer damga"),
+			Resources.Load<Sprite>("snelle kogels"),
+
 		};
 	}
 	

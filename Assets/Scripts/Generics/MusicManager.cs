@@ -40,6 +40,7 @@ public class MusicManager : MonoBehaviour
     {
         audioSource.Stop();
         audioSource.clip = coolSong;
+        audioSource.time = 2;
         audioSource.Play();
     }
 }

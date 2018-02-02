@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using System.Linq;
 using NUnit.Framework.Internal;
 using UnityEngine;
@@ -14,6 +15,10 @@ using UnityEngine.SceneManagement;
 public class EnemyManager : MonoBehaviour {
     public static EnemyManager instance;
 
+    public static BossKilled OnBossKilled;
+
+    public delegate void BossKilled(Enemy enemy);
+
     public Enemy[] enemies;
     private Enemy _activeEnemy;
 
@@ -27,7 +32,7 @@ public class EnemyManager : MonoBehaviour {
     public static UnityAction onGameWon;
 
     // Use this for initialization
-    void Start() {
+    void Awake() {
         if (EnemyManager.instance != null) {
             Destroy(gameObject);
         } else {
@@ -35,6 +40,11 @@ public class EnemyManager : MonoBehaviour {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        SceneManager.sceneLoaded += (s, m) =>
+        {
+            if (s.buildIndex == 0) Destroy(gameObject);
+        };
     }
 
     void SpawnEnemies() {
@@ -60,6 +70,9 @@ public class EnemyManager : MonoBehaviour {
     private void RegisterDeath() {
         Debug.Log("Death Registered");
         _activeEnemy.killed += 1;
+
+        if (OnBossKilled != null) OnBossKilled(_activeEnemy);
+        
         for (int i = 0; i < enemies.Length; i++) {
             Debug.Log(enemies[i].name);
             if (enemies[i].name == _activeEnemy.name) {

@@ -8,7 +8,7 @@ public class PlayerSound : MonoBehaviour
 	[SerializeField] private AudioClip[] jump;
 	[SerializeField] private AudioClip[] land;
 	[SerializeField] private AudioClip[] projectileHit;
-	private AudioSource a_shootingLoop;
+	public AudioSource a_shootingLoop;
 	private AudioSource a_soundeffects;
 	private bool wasShooting;
 
@@ -25,9 +25,9 @@ public class PlayerSound : MonoBehaviour
 		pm = GetComponent<PlayerMovement>();
 		a_shootingLoop = gameObject.AddComponent<AudioSource>();
 		a_soundeffects = gameObject.AddComponent<AudioSource>();
-		pm.OnJump += (s, e) => { a_soundeffects.PlayOneShot(GetRandomClip(jump)); };
-		pm.OnLand += (s, e) => { a_soundeffects.PlayOneShot(GetRandomClip(land)); };
-		Projectile.OnProjectileHit += (v) => { a_shootingLoop.PlayOneShot(GetRandomClip(projectileHit)); };
+		pm.OnJump += (s, e) => { if(a_soundeffects != null) a_soundeffects.PlayOneShot(GetRandomClip(jump)); };
+		pm.OnLand += (s, e) => { if(a_soundeffects != null) a_soundeffects.PlayOneShot(GetRandomClip(land)); };
+		Projectile.OnProjectileHit += (v) => { if(a_shootingLoop != null) a_shootingLoop.PlayOneShot(GetRandomClip(projectileHit)); };
 
 		if(!MenuButtons.CrazyMode) MusicManager.Instance.PlayNormalMusic();
 	}
