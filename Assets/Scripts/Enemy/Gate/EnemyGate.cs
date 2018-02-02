@@ -65,7 +65,8 @@ public class EnemyGate : MonoBehaviour {
         Debug.Log("EnemyGate :: Reason Called");
         // Smash should be used when player is near the gate
         // Spikes & Trash can be used anytime also we prefer smash over trash & spoikes
-        if ((Vector3.Distance(_player.transform.position, transform.position) < 5)) {
+        Debug.Log(Vector3.Distance(_player.transform.position, transform.position));
+        if (isPlayerInSmashRadius) {
             // SMASH
             State = GateStatus.Smash;
             Debug.Log("EnemyGate :: Smashing (https://i.imgur.com/F2IrisG.jpg)");
