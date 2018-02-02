@@ -1236,10 +1236,10 @@ RectTransform:
   m_Father: {fileID: 1470310431}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.16}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.4, y: -121.6}
-  m_SizeDelta: {x: 412.7, y: 84.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -12.399994, y: -121.6}
+  m_SizeDelta: {x: -735.3, y: -503.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1036476059
 MonoBehaviour:
@@ -1666,10 +1666,10 @@ RectTransform:
   m_Father: {fileID: 1957748477}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1500693551
 GameObject:
@@ -1987,10 +1987,10 @@ RectTransform:
   m_Father: {fileID: 1470310431}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.5}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50.4, y: 87.99}
-  m_SizeDelta: {x: 150, y: 150}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -50.399994, y: 87.98999}
+  m_SizeDelta: {x: -998, y: -438}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1731064723
 MonoBehaviour:
@@ -2278,7 +2278,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1049, y: 487}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1900361530
 MonoBehaviour:
@@ -2347,10 +2347,10 @@ RectTransform:
   m_Father: {fileID: 1470310431}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.2}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -19.8, y: -63.5}
-  m_SizeDelta: {x: 327.95, y: 20}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -19.799988, y: -63.5}
+  m_SizeDelta: {x: -820.05, y: -568}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1930078561
 MonoBehaviour:
@@ -2491,7 +2491,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1934909687}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8c0dc31ab67a4ebd87281084bb247d2, type: 3}
   m_Name: 
