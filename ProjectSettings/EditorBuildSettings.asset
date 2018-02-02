@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Flipbook.unity
+    guid: 3eefc64a1db615243959a7af6bc4d7db
+  - enabled: 1
+    path: Assets/Scenes/Timo's Work Scene.unity
+    guid: 1cb6d01121ac0a54b8f1eca59c93ff81
