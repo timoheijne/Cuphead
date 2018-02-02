@@ -43,4 +43,14 @@ public class MusicManager : MonoBehaviour
         audioSource.time = 2;
         audioSource.Play();
     }
+
+    public void Stop()
+    {
+        audioSource.Stop();
+    }
+
+    void OnDestroy()
+    {
+        _instance = null;
+    }
 }

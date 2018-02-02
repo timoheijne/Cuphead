@@ -47,9 +47,8 @@ public class Randomiser : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 		SceneManager.sceneLoaded += SceneLoaded;
 		MenuButtons.CrazyMode = true;
+		_player = null;
 		
-		Debug.Log(HighscoreManager.GetHighscores().Count);
-
 		// oops, this is dumb!
 		Health.OnHit += (a,e) => { PlayerHealth.points += (int) Health.DamageTaken; };
 	}
@@ -59,15 +58,15 @@ public class Randomiser : MonoBehaviour
 		// roll the slot machine, reset player position.... yep.
 		RollSlotMachine();
 		PLAYER.GetComponent<PlayerHealth>().Reset();
+		PLAYER.GetComponent<PlayerSound>().StopSounds();
 		PLAYER.transform.position = originalPlayerPosition;
+		MusicManager.Instance.Stop();
 	}
 
 	private void SceneLoaded(Scene arg0, LoadSceneMode loadSceneMode)
 	{
 		if (arg0.buildIndex == 0) Destroy(gameObject);
 		if (arg0.buildIndex != 1) return;
-
-		print("hello");
 		
 		var bossmanagerspawner = EnemyManager.instance;
 		bossmanagerspawner.mode = EnemyManager.Gamemodes.Crazy;
@@ -172,4 +171,9 @@ public class Randomiser : MonoBehaviour
 			GUI.Label(new Rect(10,10,200,200), _currentModifier.GetType().Name);
 	}
 #endif
+
+	void OnDestroy()
+	{
+		_player = null;
+	}
 }

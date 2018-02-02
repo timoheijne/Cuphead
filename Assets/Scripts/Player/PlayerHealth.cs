@@ -47,8 +47,6 @@ public class PlayerHealth : MonoBehaviour {
         g.Init(points);
         
         Time.timeScale = 0;
-        
-        
     }
 
     public void Reset()

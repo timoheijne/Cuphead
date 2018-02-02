@@ -37,8 +37,15 @@ public class PlayerSound : MonoBehaviour
 		ShootSound();
 	}
 
+	public void StopSounds()
+	{
+		a_shootingLoop.Stop();
+	}
+	
 	void ShootSound()
 	{
+		if (Time.timeScale == 0) return;
+		
 		if (!wasShooting && ps.shooting)
 		{
 			a_soundeffects.PlayOneShot(GetRandomClip(shootStart));
