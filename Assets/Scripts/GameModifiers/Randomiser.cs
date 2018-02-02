@@ -47,11 +47,16 @@ public class Randomiser : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 		SceneManager.sceneLoaded += SceneLoaded;
 		MenuButtons.CrazyMode = true;
-		_player = null;
 		
 		// oops, this is dumb!
-		Health.OnHit += (a,e) => { PlayerHealth.points += (int) Health.DamageTaken; };
+		Health.OnHit += OnHit;
 	}
+
+	private void OnHit(object s, EventArgs e)
+	{
+		PlayerHealth.points += (int) Health.DamageTaken;
+	}
+	
 
 	private void OnBossKilled(Enemy enemy)
 	{
@@ -175,5 +180,8 @@ public class Randomiser : MonoBehaviour
 	void OnDestroy()
 	{
 		_player = null;
+		SceneManager.sceneLoaded -= SceneLoaded;
+		Health.OnHit -= OnHit;
+
 	}
 }
