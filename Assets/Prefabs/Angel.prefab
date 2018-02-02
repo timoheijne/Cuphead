@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  arrow: {fileID: 1917513086108046, guid: e4492964cecdc4653a4efdcd9d6096a1, type: 2}
+  _arrow: {fileID: 1917513086108046, guid: e4492964cecdc4653a4efdcd9d6096a1, type: 2}
   _angelOffset: {x: 0, y: 2, z: 0}
 --- !u!212 &212438436225390784
 SpriteRenderer:

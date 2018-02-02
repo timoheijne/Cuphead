@@ -10,12 +10,12 @@ public class LazerEyes : MonoBehaviour {
     private LineRenderer _lineRenderer;
 
     [SerializeField] private Transform _startLocation;
-
     [SerializeField] private LayerMask _layerMask;
 
     public float speed = 1.0F;
     private float _startTime;
     private float _journeyLength;
+    private Vector3 _endLocation;
 
     // Use this for initialization
     void Start() {
@@ -26,12 +26,12 @@ public class LazerEyes : MonoBehaviour {
         yield return new WaitUntil(() => Boss.player != null);
 
         _startTime = Time.time;
-        _journeyLength = Vector3.Distance(_startLocation.position, Boss.player.transform.position);
+        _journeyLength = Vector3.Distance(_startLocation.position, _endLocation);
 
         while (true) {
             GameObject player = Boss.player;
 
-            Vector3 dir = (player.transform.position - _startLocation.position);
+            Vector3 dir = (_endLocation - _startLocation.position);
 
             RaycastHit2D hit = Physics2D.Raycast(_startLocation.position, dir, Mathf.Infinity, _layerMask);
             if (hit.collider != null) {
@@ -46,6 +46,10 @@ public class LazerEyes : MonoBehaviour {
             _lineRenderer.SetPositions(new Vector3[] {endPos, _startLocation.position});
 
             if (fracJourney >= 1.5) {
+                if (hit.transform.CompareTag("Player")) {
+                    Boss.player.GetComponent<PlayerHealth>().TakeDamage();
+                }
+                
                 _lineRenderer.SetPositions(new Vector3[] {Vector3.zero, Vector3.zero});
                 yield break;
             }
@@ -55,6 +59,7 @@ public class LazerEyes : MonoBehaviour {
     }
 
     public void StartLaser() {
+        _endLocation = Boss.player.transform.position;
         StartCoroutine(RunLaser());
     }
 }
