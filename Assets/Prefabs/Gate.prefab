@@ -43,13 +43,14 @@ GameObject:
   - component: {fileID: 114109920567332226}
   - component: {fileID: 114560496442414530}
   - component: {fileID: 114851321098022670}
+  - component: {fileID: 50519801341843570}
   m_Layer: 10
   m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4321376192689900
 Transform:
   m_ObjectHideFlags: 1
@@ -77,6 +78,26 @@ Transform:
   m_Father: {fileID: 4321376192689900}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50519801341843570
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1985780383048472}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!61 &61286479691886952
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -196,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
+  dead: 0
 --- !u!114 &114851321098022670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -209,8 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spike1: {fileID: 1479455351978496, guid: 5e71fce830a031c40925378b19078402, type: 2}
   spike2: {fileID: 1479455351978496, guid: 5e71fce830a031c40925378b19078402, type: 2}
-  spike1Offset: {x: 0.63, y: 0, z: 0}
-  spike2Offset: {x: -0.68, y: -0.24, z: 0}
+  spike1Offset: {x: 0.96, y: 0, z: 0}
+  spike2Offset: {x: -1.75, y: -0.3, z: 0}
 --- !u!212 &212719896940381602
 SpriteRenderer:
   m_ObjectHideFlags: 1

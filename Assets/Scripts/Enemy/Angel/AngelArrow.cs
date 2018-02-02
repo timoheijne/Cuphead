@@ -4,15 +4,14 @@ using UnityEngine;
 
 // Created By Timo Heijne
 public class AngelArrow : MonoBehaviour {
+    public float speed = 5;
 
-	public float speed = 5;
-	
-	// Update is called once per frame
-	void Update () {
-		transform.position += transform.forward * Time.deltaTime * speed;
-	}
+    // Update is called once per frame
+    void Update() {
+        transform.position += transform.forward * Time.deltaTime * speed;
+    }
 
-	private void OnCollisionEnter(Collision other) {
-		throw new System.NotImplementedException();
-	}
+    private void OnCollisionEnter(Collision other) {
+        throw new System.NotImplementedException();
+    }
 }

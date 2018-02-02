@@ -6,19 +6,17 @@ using UnityEngine;
 // Created By Timo Heijne
 [RequireComponent(typeof(BossAnimator))]
 public class Boss : MonoBehaviour {
-
     public LazerEyes[] laserEyes;
     public GameObject thunderStrike;
     public GameObject angel;
-    
-    public static GameObject _player;
+
+    public static GameObject player;
     private Health _health;
     private BossAnimator _bossAnimator;
 
     private float _attackTimer = 5;
-    
-    [SerializeField]
-    private Transform _thunderThrowPoint;
+
+    [SerializeField] private Transform _thunderThrowPoint;
 
     public enum BossState {
         Idle,
@@ -30,20 +28,17 @@ public class Boss : MonoBehaviour {
 
     public BossState state = BossState.Idle;
 
-    private void Start()
-    {
-        if(!_player)
-            _player = GameObject.FindGameObjectWithTag("Player");
+    private void Start() {
+        if (!player) player = GameObject.FindGameObjectWithTag("Player");
         _health = gameObject.AddComponent<Health>();
         _health.HasDied += HasDied;
 
         _bossAnimator = GetComponent<BossAnimator>();
     }
 
-    private void HasDied()
-    {
-        // Send message to boss handler
-        throw new NotImplementedException("WHAT THE FUCK!!!!!!!!!!!!!!!!!!! IMPOSSIBRUUUUUUUU"); 
+    private void HasDied() {
+        state = BossState.Dead;
+        _bossAnimator.SetState(state);
     }
 
     private void Update() {
@@ -67,9 +62,9 @@ public class Boss : MonoBehaviour {
                 default:
                     throw new IndexOutOfRangeException("Attack Type is out of range (0-2)");
             }
-            
+
             _bossAnimator.SetState(state);
-        }        
+        }
     }
 
     private void LazerEyes() {
@@ -81,7 +76,7 @@ public class Boss : MonoBehaviour {
     }
 
     private void ThunderStrike() {
-        GameObject go = Instantiate(thunderStrike, _thunderThrowPoint.position, Quaternion.identity);        
+        GameObject go = Instantiate(thunderStrike, _thunderThrowPoint.position, Quaternion.identity);
         state = BossState.Idle;
     }
 
@@ -90,9 +85,9 @@ public class Boss : MonoBehaviour {
         Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth, 0, Camera.main.nearClipPlane));
         pos.x = p.x + 5;
         pos.z = 0;
-        
+
         GameObject go = Instantiate(angel, pos, Quaternion.identity);
-        
+
         state = BossState.Idle;
     }
 }
