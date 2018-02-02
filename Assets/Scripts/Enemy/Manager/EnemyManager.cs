@@ -68,8 +68,7 @@ public class EnemyManager : MonoBehaviour {
                     if (mode == Gamemodes.Normal) {
                         Debug.Log("Last Reached - Normal Mode");
                         // Reached last enemy.. We done boi
-                        _activeEnemy.activeGameObject.SetActive(false);
-                        if (onGameWon != null) onGameWon();
+                        StartCoroutine(GameWon(_activeEnemy));
                     } else {
                         Debug.Log("Roight Next one");
 
@@ -91,6 +90,14 @@ public class EnemyManager : MonoBehaviour {
                 DisableObject(_activeEnemy)); // We do this so we can allow some animations & explosions or whatever
 
         StartCoroutine(ActivateObject(enemy));
+    }
+
+    IEnumerator GameWon(Enemy enemy) {
+        yield return new WaitForSeconds(2f);
+        EffectManager.instance.SpawnExplosionAtPoint(_activeEnemy.activeGameObject.transform.position);
+        _activeEnemy.activeGameObject.SetActive(false);
+
+        if (onGameWon != null) onGameWon();
     }
 
     IEnumerator DisableObject(Enemy enemy) {
@@ -118,6 +125,4 @@ public class EnemyManager : MonoBehaviour {
             enemy.healthScript.CurHealth = enemy.health;
         }
     }
-    
-    
 }

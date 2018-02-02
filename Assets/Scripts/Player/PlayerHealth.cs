@@ -48,7 +48,7 @@ public class PlayerHealth : MonoBehaviour {
                 uiHealthImage.sprite = oneHP;
                 break;
             default:
-                uiHealthImage.sprite = null;
+                uiHealthImage.sprite = oneHP;
                 break;
         }
 
@@ -56,6 +56,14 @@ public class PlayerHealth : MonoBehaviour {
             if (HasDied != null) {
                 HasDied();
             }
+        }
+    }
+
+    public void Die() {
+        if (HasDied != null) {
+            health = 0;
+            uiHealthImage.sprite = oneHP;
+            HasDied();
         }
     }
 

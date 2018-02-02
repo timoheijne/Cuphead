@@ -37,6 +37,7 @@ public class Boss : MonoBehaviour {
     }
 
     private void HasDied() {
+        print("Boss Dead");
         state = BossState.Dead;
         _bossAnimator.SetState(state);
     }
