@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Created By Timo Heijne
+/// <summary>
+/// Here handle the animation state of the "story" flipbook
+/// </summary>
 public class FlipbookManager : MonoBehaviour {
     private int _currentPage = 1;
 

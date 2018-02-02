@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
 // Created By Timo Heijne
+/// <summary>
+/// This is our datatype for enemies. so we can very easily add more enemies to the cycle if we want to
+/// </summary>
 [System.Serializable]
 public class Enemy {
     public string name;

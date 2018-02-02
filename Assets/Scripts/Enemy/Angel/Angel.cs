@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine;
 
 // Created By Timo Heijne
+/// <summary>
+/// Keep track of an angel which is spawned by the boss
+/// </summary>
 public class Angel : MonoBehaviour {
     private Camera _main;
 

@@ -4,6 +4,10 @@ using System.Diagnostics;
 using UnityEngine;
 
 // Created By Timo Heijne
+
+/// <summary>
+/// Here we keep track of what attack the boss (god) should do.
+/// </summary>
 [RequireComponent(typeof(BossAnimator))]
 public class Boss : MonoBehaviour {
     public LazerEyes[] laserEyes;
@@ -37,6 +41,7 @@ public class Boss : MonoBehaviour {
     }
 
     private void HasDied() {
+        print("Boss Dead");
         state = BossState.Dead;
         _bossAnimator.SetState(state);
     }

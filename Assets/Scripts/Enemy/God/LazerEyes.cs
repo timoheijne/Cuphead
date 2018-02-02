@@ -4,7 +4,7 @@ using UnityEngine;
 
 // Created By Timo Heijne
 /// <summary>
-/// This handels the laZer eye's of god (AND YES LAZER IS THE SUPPERIOR WAY OF SPELLING "LASER"..) 
+/// This handels the laZer eye's of god
 /// </summary>
 public class LazerEyes : MonoBehaviour {
     private LineRenderer _lineRenderer;
