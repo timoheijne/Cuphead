@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class Health : MonoBehaviour {
     [Tooltip("Set the health of this object. This does not indicate max health but current health.. There is no max")]
     [SerializeField]
     private float _health = 100;
+
+    public static float DamageTaken = 1;
 
     private SpriteRenderer sprite;
 
@@ -22,6 +25,7 @@ public class Health : MonoBehaviour {
     public delegate void Died();
 
     public Died HasDied;
+    public static EventHandler OnHit;
 
     [HideInInspector] public bool dead = false;
 
@@ -39,7 +43,8 @@ public class Health : MonoBehaviour {
 
     private void Damage() {
         StartCoroutine(Blink());
-        CurHealth -= 5;
+        if (OnHit != null) OnHit(this, null);
+        CurHealth -= DamageTaken;
     }
 
     private IEnumerator Blink() {
@@ -52,7 +57,6 @@ public class Health : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.collider.tag == "Projectile") {
             Damage();
-
             EffectManager.instance.SpawnHitAtPoint(other.transform.position);
             Destroy(other.gameObject);
         }

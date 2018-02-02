@@ -26,7 +26,7 @@ public class MenuButtons : MonoBehaviour
     public void StartNormalMode()
     {
         CrazyMode = false;
-        StartCoroutine(LoadLevel());
+        StartCoroutine(LoadNormal());
     }
 
     void DisableFirstButtons()
@@ -39,10 +39,26 @@ public class MenuButtons : MonoBehaviour
         var randomiser = Resources.Load<GameObject>("randomiser");
         Instantiate(randomiser);
         CrazyMode = true;
-        StartCoroutine(LoadLevel());
+        StartCoroutine(LoadCrazyMode());
     }
 
-    public IEnumerator LoadLevel()
+    public IEnumerator LoadNormal()
+    {
+        menuGameObject.SetActive(false);
+        loadScreen.SetActive(true);
+        
+        var operation = SceneManager.LoadSceneAsync(2, LoadSceneMode.Single);
+        operation.allowSceneActivation = false;
+
+        while (operation.progress < 0.9f)
+        {
+            yield return null;
+        }
+
+        operation.allowSceneActivation = true;
+    }
+
+    public IEnumerator LoadCrazyMode()
     {
         menuGameObject.SetActive(false);
         loadScreen.SetActive(true);
@@ -56,5 +72,6 @@ public class MenuButtons : MonoBehaviour
         }
 
         operation.allowSceneActivation = true;
+
     }
 }
