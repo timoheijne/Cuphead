@@ -11,8 +11,8 @@ public class AngelArrow : MonoBehaviour {
         transform.position += transform.forward * Time.deltaTime * speed;
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Player")) {
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Player")) {
             Destroy(gameObject);
         }
     }

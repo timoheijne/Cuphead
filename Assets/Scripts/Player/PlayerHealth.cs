@@ -66,10 +66,6 @@ public class PlayerHealth : MonoBehaviour {
         _spriteRenderer.color = c;
     }
 
-    private void OnParticleCollision(GameObject other) { // This is for the paper & key attack 'n shit
-        throw new System.NotImplementedException();
-    }
-
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Spike") || other.CompareTag("lightningStrike") || other.CompareTag("Paper Hit") || other.CompareTag("Arrow")) {
             TakeDamage();
