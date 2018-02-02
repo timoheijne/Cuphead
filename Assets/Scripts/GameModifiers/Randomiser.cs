@@ -36,6 +36,9 @@ public class Randomiser : MonoBehaviour
 	}
 
 	private bool update = false;
+	private Vector3 originalPlayerPosition;
+	
+	public static int points = 0;
 
 	void Awake()
 	{
@@ -43,15 +46,37 @@ public class Randomiser : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 		SceneManager.sceneLoaded += SceneLoaded;
 		MenuButtons.CrazyMode = true;
+
+		// oops, this is dumb!
+		Health.OnHit += (a,e) => { PlayerHealth.points += (int) Health.DamageTaken; };
+	}
+
+	private void OnBossKilled(Enemy enemy)
+	{
+		// roll the slot machine, reset player position.... yep.
+		RollSlotMachine();
+		PLAYER.GetComponent<PlayerHealth>().Reset();
+		PLAYER.transform.position = originalPlayerPosition;
 	}
 
 	private void SceneLoaded(Scene arg0, LoadSceneMode loadSceneMode)
 	{
+		if (arg0.buildIndex == 0) Destroy(gameObject);
 		if (arg0.buildIndex != 1) return;
+
+		print("hello");
+		
+		var bossmanagerspawner = EnemyManager.instance;
+		bossmanagerspawner.mode = EnemyManager.Gamemodes.Crazy;
+		EnemyManager.OnBossKilled += OnBossKilled;
 
 		_slotMachine = Resources.Load<GameObject>("slotmachine");
 		_randomiser = Instantiate(_slotMachine, new Vector3(0, 0, -8), Quaternion.identity)
 			.GetComponent<Slotmachine>();
+
+		originalPlayerPosition = PLAYER.transform.position;
+
+		PlayerHealth.points = 0;
 		
 		RollSlotMachine();
 	}
@@ -61,6 +86,7 @@ public class Randomiser : MonoBehaviour
 		int rnumber = GetRandomNumber();
 		RandomiseMod(GetRandomModifier(rnumber));
 		_currentSprite = ModifierSprites[rnumber];
+		_randomiser.gameObject.SetActive(true);
 		_randomiser.StartSlotmachine(_currentSprite, _currentModifier.Name, this);
 		Time.timeScale = 0;
 	}

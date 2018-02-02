@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,9 +26,34 @@ public class PlayerHealth : MonoBehaviour {
     [SerializeField] private Sprite twoHP;
     [SerializeField] private Sprite threeHP;
 
+    private int savedHP;
+
+    public static int points = 0; // I am so sorry - Antonio Bottelier
+    
     // Use this for initialization
-    void Start() {
+    void Awake() {
         _lastDamage = Time.time;
+        savedHP = health;
+        
+        HasDied += Dead;
+    }
+
+    private void Dead()
+    {   
+        EnemyManager instance = EnemyManager.instance;
+        if (instance.mode != EnemyManager.Gamemodes.Crazy) return;
+
+        var g = Instantiate(Resources.Load<GameObject>("highscorecanvas")).GetComponent<HighscoreCanvas>();
+        g.Init(points);
+        
+        Time.timeScale = 0;
+        
+        
+    }
+
+    public void Reset()
+    {
+        health = savedHP;
     }
 
     public void TakeDamage() {
@@ -64,10 +90,6 @@ public class PlayerHealth : MonoBehaviour {
         _spriteRenderer.color = new Color(0.8f, c.g, c.b, c.a);
         yield return new WaitForSeconds(0.05f);
         _spriteRenderer.color = c;
-    }
-
-    private void OnParticleCollision(GameObject other) { // This is for the paper & key attack 'n shit
-        throw new System.NotImplementedException();
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

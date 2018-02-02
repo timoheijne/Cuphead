@@ -39,6 +39,8 @@ GameObject:
   - component: {fileID: 4825893013479818}
   - component: {fileID: 212597735833197330}
   - component: {fileID: 114916080582550560}
+  - component: {fileID: 61137801262490996}
+  - component: {fileID: 114274992901666116}
   m_Layer: 0
   m_Name: ThunderCloud
   m_TagString: Untagged
@@ -66,13 +68,38 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1980074300322576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.72, y: 4.98, z: 0}
+  m_LocalPosition: {x: 2.5717058, y: -1.2676785, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4147573998199590}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &61137801262490996
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980074300322576}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.23, y: 0.83}
+    newSize: {x: 6.85, y: 3.73}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.23, y: 0.83}
+  m_EdgeRadius: 0
 --- !u!61 &61841851019127640
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -115,6 +142,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114274992901666116
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1980074300322576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68baa3475ff84549870b926d7bffa96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: 5
+  dead: 0
 --- !u!114 &114916080582550560
 MonoBehaviour:
   m_ObjectHideFlags: 1

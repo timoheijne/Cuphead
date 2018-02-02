@@ -95,6 +95,7 @@ public class Slotmachine : MonoBehaviour
 		_modifierText.gameObject.SetActive(true);
 		
 		Time.timeScale = 1;
+		rolling = false;
 		gameObject.SetActive(false);
 		_currentModifier.StartMod();
 	}

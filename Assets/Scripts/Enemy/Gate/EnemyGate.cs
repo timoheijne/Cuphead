@@ -31,7 +31,7 @@ public class EnemyGate : MonoBehaviour {
     private float _attackTimer = 0;
 
     // Use this for initialization
-    void Start() {
+    void Awake() {
         if (!_player) _player = GameObject.FindGameObjectWithTag("Player");
 
         _animator = GetComponent<GateAnimation>();
@@ -39,6 +39,7 @@ public class EnemyGate : MonoBehaviour {
         State = GateStatus.Idle;
 
         _health.HasDied += OnDeath;
+        _attackTimer = attackDelay;
     }
 
     void OnDeath() {
@@ -65,7 +66,6 @@ public class EnemyGate : MonoBehaviour {
         Debug.Log("EnemyGate :: Reason Called");
         // Smash should be used when player is near the gate
         // Spikes & Trash can be used anytime also we prefer smash over trash & spoikes
-        Debug.Log(Vector3.Distance(_player.transform.position, transform.position));
         if (isPlayerInSmashRadius) {
             // SMASH
             State = GateStatus.Smash;

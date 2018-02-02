@@ -89,6 +89,8 @@ namespace GameModifiers.Modifiers
         public override void DestroyMod(Randomiser r)
         {
             Projectile.OnProjectileHit -= OnProjectileHit;
+            PlayerShooting.OnShoot -= OnProjectileHit;
+
             Object.Destroy(_backdrop);
             Object.Destroy(explosionSource);
         }

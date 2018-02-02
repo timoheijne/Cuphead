@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class Health : MonoBehaviour {
     public delegate void Died();
 
     public Died HasDied;
+    public static EventHandler OnHit;
 
     [HideInInspector] public bool dead = false;
 
@@ -41,6 +43,7 @@ public class Health : MonoBehaviour {
 
     private void Damage() {
         StartCoroutine(Blink());
+        if (OnHit != null) OnHit(this, null);
         CurHealth -= DamageTaken;
     }
 
@@ -54,7 +57,6 @@ public class Health : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.collider.tag == "Projectile") {
             Damage();
-
             EffectManager.instance.SpawnHitAtPoint(other.transform.position);
             Destroy(other.gameObject);
         }
