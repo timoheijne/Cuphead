@@ -1,4 +1,4 @@
-# kingdomhearts
+# Cuphead
 ###
 
 Download game build: [Hier](https://github.com/lghenk/Cuphead/releases)
