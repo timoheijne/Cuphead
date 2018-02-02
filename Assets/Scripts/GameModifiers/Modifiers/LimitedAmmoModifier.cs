@@ -72,6 +72,8 @@ namespace GameModifiers.Modifiers
         {
             PlayerShooting.OnShoot -= OnShoot;
             PlayerShooting.limitedAmmoMode = false;
+            
+            SpawnedAmmoKits.ForEach(x=>Object.Destroy(x.gameObject));
         }
 
         void DeleteAmmoKit(GameObject ammokit)
