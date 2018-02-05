@@ -1,6 +1,7 @@
 ﻿public abstract class Modifier
 {
     public string Name { get; set; }
+    public bool started { get; private set; }
     
     public Modifier(string name)
     {
@@ -16,6 +17,7 @@
     {
         PlayMusic();
         StartMod(r);
+        started = true;
     }
     
     public abstract void StartMod(Randomiser r);

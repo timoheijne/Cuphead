@@ -180,6 +180,8 @@ public class Randomiser : MonoBehaviour
 	void OnDestroy()
 	{
 		_player = null;
+		if (_currentModifier != null && _currentModifier.started == true) 
+			_currentModifier.DestroyMod(this);
 		SceneManager.sceneLoaded -= SceneLoaded;
 		Health.OnHit -= OnHit;
 		EnemyManager.OnBossKilled -= OnBossKilled;
