@@ -39,10 +39,13 @@ public class EnemyManager : MonoBehaviour {
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        
-        enemies.ToList().ForEach(x=>x.healthScript.HasDied += RegisterDeath);
 
         SceneManager.sceneLoaded += CheckIfMainMenu;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= CheckIfMainMenu;
     }
 
     private void CheckIfMainMenu(Scene s, LoadSceneMode e)
@@ -63,6 +66,7 @@ public class EnemyManager : MonoBehaviour {
                 enemy.healthScript.CurHealth = enemy.health;
                 enemy.activeGameObject.name = enemy.name;
                 enemy.activeGameObject.SetActive(false);
+                enemy.healthScript.HasDied += RegisterDeath;
             }
         }
 
