@@ -45,11 +45,13 @@ public class DeathScreen : MonoBehaviour {
 
 	public void Retry() {
 		if (EnemyManager.instance.mode == EnemyManager.Gamemodes.Normal) {
+			Time.timeScale = 1;
 			SceneManager.LoadScene("Timo's Work Scene");
 		}
 	}
 
 	public void Quit() {
+		Time.timeScale = 1;
 		SceneManager.LoadScene("mainmenu");
 	}
 

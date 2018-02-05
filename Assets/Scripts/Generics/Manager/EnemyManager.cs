@@ -40,8 +40,6 @@ public class EnemyManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
         }
         
-        enemies.ToList().ForEach(x=>x.healthScript.HasDied += RegisterDeath);
-
         SceneManager.sceneLoaded += (s, m) =>
         {
             if (s.buildIndex == 0) Destroy(gameObject);
@@ -56,6 +54,7 @@ public class EnemyManager : MonoBehaviour {
                 enemy.healthScript.CurHealth = enemy.health;
                 enemy.activeGameObject.name = enemy.name;
                 enemy.activeGameObject.SetActive(false);
+                enemy.healthScript.HasDied += RegisterDeath;
             }
         }
 
