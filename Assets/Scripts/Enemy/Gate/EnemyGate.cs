@@ -42,6 +42,11 @@ public class EnemyGate : MonoBehaviour {
         _attackTimer = attackDelay;
     }
 
+    void OnDestroy()
+    {
+        _health.HasDied -= OnDeath;
+    }
+    
     void OnDeath() {
         State = GateStatus.Dead;
         _animator.SetState(State);

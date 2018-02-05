@@ -182,6 +182,7 @@ public class Randomiser : MonoBehaviour
 		_player = null;
 		SceneManager.sceneLoaded -= SceneLoaded;
 		Health.OnHit -= OnHit;
+		EnemyManager.OnBossKilled -= OnBossKilled;
 
 	}
 }

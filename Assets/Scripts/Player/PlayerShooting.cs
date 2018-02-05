@@ -26,7 +26,17 @@ public class PlayerShooting : MonoBehaviour
 		_playerInput = GetComponent<PlayerInput>();
 		if(!_muzzleFlashParticle) _muzzleFlashParticle = Resources.Load<GameObject>("shootparticle");
 
-		OnShoot += (e) => { Instantiate(_muzzleFlashParticle, _exitpoint.position, Quaternion.identity); };
+		OnShoot += ShootParticle;
+	}
+
+	void ShootParticle(Vector3 position)
+	{
+		Instantiate(_muzzleFlashParticle, _exitpoint.position, Quaternion.identity);
+	}
+
+	private void OnDestroy()
+	{
+		OnShoot -= ShootParticle;
 	}
 
 	public bool CanShoot

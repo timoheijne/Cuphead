@@ -32,6 +32,11 @@ public class ThunderStorm : MonoBehaviour {
     void OnDeath() {
         Destroy(gameObject);
     }
+
+    void OnDestroy()
+    {
+        _health.HasDied -= OnDeath;
+    }
     
     IEnumerator LightingStrike() {
         yield return new WaitForSeconds(2f);

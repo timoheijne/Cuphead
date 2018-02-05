@@ -17,6 +17,13 @@ public class DeathScreen : MonoBehaviour {
 		EnemyManager.onGameWon += OnGameWon;
 		_player = GameObject.FindGameObjectWithTag("Player");
 		_player.GetComponent<PlayerHealth>().HasDied += HasDied;
+
+	}
+
+	private void OnDestroy()
+	{
+		EnemyManager.onGameWon -= OnGameWon;
+		_player.GetComponent<PlayerHealth>().HasDied -= HasDied;
 	}
 
 	void Update() {

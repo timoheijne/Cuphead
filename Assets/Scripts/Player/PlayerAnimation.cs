@@ -8,16 +8,24 @@ public class PlayerAnimation : MonoBehaviour
     private Animator _animator;
     private PlayerInput _input;
 
+    private PlayerMovement movement;
+
     void Start()
     {
         _animator = GetComponentInChildren<Animator>();
         _input = GetComponent<PlayerInput>();
 
-        var movement = GetComponent<PlayerMovement>();
-        var shooting = GetComponent<PlayerShooting>();
+        movement = GetComponent<PlayerMovement>();
         
         movement.OnJump += OnJump;
         PlayerShooting.OnShoot += OnShoot;
+    }
+
+    private void OnDestroy()
+    {
+        movement.OnJump -= OnJump;
+        PlayerShooting.OnShoot -= OnShoot;
+
     }
 
     private void OnShoot(Vector3 s)

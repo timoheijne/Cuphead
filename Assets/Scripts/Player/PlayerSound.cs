@@ -1,4 +1,8 @@
-﻿using UnityEngine; // test
+﻿using System;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+// test
 
 public class PlayerSound : MonoBehaviour
 {
@@ -25,11 +29,37 @@ public class PlayerSound : MonoBehaviour
 		pm = GetComponent<PlayerMovement>();
 		a_shootingLoop = gameObject.AddComponent<AudioSource>();
 		a_soundeffects = gameObject.AddComponent<AudioSource>();
-		pm.OnJump += (s, e) => { if(a_soundeffects != null) a_soundeffects.PlayOneShot(GetRandomClip(jump)); };
-		pm.OnLand += (s, e) => { if(a_soundeffects != null) a_soundeffects.PlayOneShot(GetRandomClip(land)); };
-		Projectile.OnProjectileHit += (v) => { if(a_shootingLoop != null) a_shootingLoop.PlayOneShot(GetRandomClip(projectileHit)); };
+		pm.OnJump += OnJump;
+		pm.OnLand += OnLand;// (s, e) => { if(a_soundeffects != null) a_soundeffects.PlayOneShot(GetRandomClip(land)); };
+		Projectile.OnProjectileHit += OnProjectileHit; // (v) => { if(a_shootingLoop != null) a_shootingLoop.PlayOneShot(GetRandomClip(projectileHit)); };
 
 		if(!MenuButtons.CrazyMode) MusicManager.Instance.PlayNormalMusic();
+	}
+
+	void OnDestroy()
+	{
+		pm.OnJump -= OnJump;
+		pm.OnLand -= OnLand;
+		Projectile.OnProjectileHit -= OnProjectileHit;
+
+	}
+	
+	private void OnJump(object sender, EventArgs @event)
+	{
+		if(a_soundeffects != null) 
+			a_soundeffects.PlayOneShot(GetRandomClip(jump));
+	}
+	
+	private void OnLand(object sender, EventArgs @event)
+	{
+		if(a_soundeffects != null) 
+			a_soundeffects.PlayOneShot(GetRandomClip(land));
+	}
+	
+	private void OnProjectileHit(Vector3 p)
+	{
+		if(a_shootingLoop != null) 
+			a_shootingLoop.PlayOneShot(GetRandomClip(projectileHit));
 	}
 	
 	void Update ()

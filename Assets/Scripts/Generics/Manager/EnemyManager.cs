@@ -42,10 +42,17 @@ public class EnemyManager : MonoBehaviour {
         
         enemies.ToList().ForEach(x=>x.healthScript.HasDied += RegisterDeath);
 
-        SceneManager.sceneLoaded += (s, m) =>
+        SceneManager.sceneLoaded += CheckIfMainMenu;
+    }
+
+    private void CheckIfMainMenu(Scene s, LoadSceneMode e)
+    {
+        if (s.buildIndex == 0)
         {
-            if (s.buildIndex == 0) Destroy(gameObject);
-        };
+            Destroy(gameObject);
+            SceneManager.sceneLoaded -= CheckIfMainMenu;
+        }
+
     }
 
     void SpawnEnemies() {

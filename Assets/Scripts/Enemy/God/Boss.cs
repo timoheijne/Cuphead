@@ -40,6 +40,11 @@ public class Boss : MonoBehaviour {
         _bossAnimator = GetComponent<BossAnimator>();
     }
 
+    private void OnDestroy()
+    {
+        _health.HasDied -= HasDied;
+    }
+
     private void HasDied() {
         print("Boss Dead");
         state = BossState.Dead;

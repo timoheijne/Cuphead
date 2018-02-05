@@ -38,6 +38,11 @@ public class PlayerHealth : MonoBehaviour {
         HasDied += Dead;
     }
 
+    void OnDestroy()
+    {
+        HasDied -= Dead;
+    }
+
     private void Dead()
     {   
         EnemyManager instance = EnemyManager.instance;
