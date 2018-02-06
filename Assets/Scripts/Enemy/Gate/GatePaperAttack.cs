@@ -14,6 +14,7 @@ public class GatePaperAttack : MonoBehaviour {
     private Vector3 _endPosition;
 
     private ParticleSystem _particleSystem;
+    private BoxCollider2D _boxCollider;
 
     // Use this for initialization
     void Start() {
@@ -27,6 +28,7 @@ public class GatePaperAttack : MonoBehaviour {
         _startTime = Time.time;
 
         _particleSystem = GetComponent<ParticleSystem>();
+        _boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class GatePaperAttack : MonoBehaviour {
 
         if (Vector3.Distance(transform.position, _endPosition) <= 0.1f) {
             _particleSystem.Stop();
+            _boxCollider.enabled = false;
             Destroy(gameObject, 2);
         }
     }

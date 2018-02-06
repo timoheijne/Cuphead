@@ -21,8 +21,8 @@ TagManager:
   - Player
   - Projectile
   - Boss
-  - 
-  - 
+  - Ground
+  - GameBorder
   - 
   - 
   - 

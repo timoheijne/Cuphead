@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 // Created By Timo Heijne
@@ -13,6 +14,7 @@ public class Health : MonoBehaviour {
     public static float DamageTaken = 1;
 
     private SpriteRenderer sprite;
+    private Color defaultSpriteColor;
 
     public float CurHealth {
         get { return _health; }
@@ -31,6 +33,7 @@ public class Health : MonoBehaviour {
 
     void Start() {
         sprite = GetComponent<SpriteRenderer>();
+        defaultSpriteColor = sprite.color;
     }
 
     private void HazDedQuestionMark() {
@@ -48,10 +51,9 @@ public class Health : MonoBehaviour {
     }
 
     private IEnumerator Blink() {
-        Color c = sprite.color;
-        sprite.color = new Color(0.8f, c.g, c.b, c.a);
+        sprite.color = new Color(0.8f, 0.6f, 0.6f, 1f);
         yield return new WaitForSeconds(0.05f);
-        sprite.color = c;
+        sprite.color = defaultSpriteColor;
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

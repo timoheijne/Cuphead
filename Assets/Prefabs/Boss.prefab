@@ -79,7 +79,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1617841156824144
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,7 +451,7 @@ MonoBehaviour:
   _startLocation: {fileID: 4688669201708512}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 4294966271
+    m_Bits: 4294962175
   speed: 30
 --- !u!114 &114185573434073654
 MonoBehaviour:
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68baa3475ff84549870b926d7bffa96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  _health: 150
   dead: 0
 --- !u!114 &114350344194938914
 MonoBehaviour:
@@ -499,7 +499,7 @@ MonoBehaviour:
   _startLocation: {fileID: 4914178207370182}
   _layerMask:
     serializedVersion: 2
-    m_Bits: 4294966271
+    m_Bits: 4294962175
   speed: 30
 --- !u!114 &114593140146421784
 MonoBehaviour:
@@ -545,7 +545,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -639,7 +639,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}

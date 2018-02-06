@@ -20,7 +20,10 @@ public class PlayerHealth : MonoBehaviour {
     public Died HasDied;
 
     [SerializeField] private Image uiHealthImage;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    
+    [SerializeField]
+    private SpriteRenderer sprite;
+    private Color defaultSpriteColor;
 
     [SerializeField] private Sprite oneHP;
     [SerializeField] private Sprite twoHP;
@@ -36,6 +39,7 @@ public class PlayerHealth : MonoBehaviour {
         savedHP = health;
         
         HasDied += Dead;
+        defaultSpriteColor = sprite.color;
     }
 
     void OnDestroy()
@@ -97,10 +101,9 @@ public class PlayerHealth : MonoBehaviour {
     }
 
     private IEnumerator Blink() {
-        Color c = _spriteRenderer.color;
-        _spriteRenderer.color = new Color(0.8f, c.g, c.b, c.a);
+        sprite.color = new Color(0.8f, 0.6f, 0.6f, 1f);
         yield return new WaitForSeconds(0.05f);
-        _spriteRenderer.color = c;
+        sprite.color = defaultSpriteColor;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

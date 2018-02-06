@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +23,12 @@ public class LazerEyes : MonoBehaviour {
         _lineRenderer = GetComponent<LineRenderer>();
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.L)) {
+            StartLaser();
+        }
+    }
+
     public IEnumerator RunLaser() {
         yield return new WaitUntil(() => Boss.player != null);
 
@@ -29,6 +36,7 @@ public class LazerEyes : MonoBehaviour {
         _journeyLength = Vector3.Distance(_startLocation.position, _endLocation);
 
         while (true) {
+            print("Update");
             GameObject player = Boss.player;
 
             Vector3 dir = (_endLocation - _startLocation.position);
@@ -46,6 +54,7 @@ public class LazerEyes : MonoBehaviour {
             _lineRenderer.SetPositions(new Vector3[] {endPos, _startLocation.position});
 
             if (fracJourney >= 1.5) {
+                print("Reached End");
                 if (hit.transform.CompareTag("Player")) {
                     Boss.player.GetComponent<PlayerHealth>().TakeDamage();
                 }
@@ -59,7 +68,9 @@ public class LazerEyes : MonoBehaviour {
     }
 
     public void StartLaser() {
+        print("Laser Start");
         _endLocation = Boss.player.transform.position;
+        print(_endLocation);
         StartCoroutine(RunLaser());
     }
 }

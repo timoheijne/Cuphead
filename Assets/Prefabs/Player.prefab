@@ -101,7 +101,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1417838068737152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2438145, y: -2.8584895, z: -6.8851805}
+  m_LocalPosition: {x: -3.196803, y: -2.0321803, z: -6.8851805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4048822419345170}
@@ -216,8 +216,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb77928420c20244199c0934245eaf43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _minCooldown: 5
   health: 3
-  _maxCooldown: 5
+  uiHealthImage: {fileID: 0}
+  sprite: {fileID: 212442486952934496}
+  oneHP: {fileID: 21300000, guid: cb47fbc28caa6a04d878f48544931ae3, type: 3}
+  twoHP: {fileID: 21300000, guid: ca5bb3829fdeb92419227666cb65b90d, type: 3}
+  threeHP: {fileID: 21300000, guid: 9a4dd71f673196949b8c7225409da0e0, type: 3}
 --- !u!114 &114604947429119062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,7 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpLayer:
     serializedVersion: 2
-    m_Bits: 4294965503
+    m_Bits: 2048
 --- !u!114 &114662017790174628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -287,6 +292,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ab3bb5cfa87003488fab65a187e2b3a, type: 3}
   - {fileID: 8300000, guid: 9b8cc978919c9d64c9576b70adf62a01, type: 3}
   - {fileID: 8300000, guid: f529d5a81d45806499719781641265bb, type: 3}
+  a_shootingLoop: {fileID: 0}
 --- !u!114 &114956655533092344
 MonoBehaviour:
   m_ObjectHideFlags: 1

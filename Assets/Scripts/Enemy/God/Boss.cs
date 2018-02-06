@@ -34,7 +34,7 @@ public class Boss : MonoBehaviour {
 
     private void Start() {
         if (!player) player = GameObject.FindGameObjectWithTag("Player");
-        _health = gameObject.AddComponent<Health>();
+        _health = gameObject.GetComponent<Health>();
         _health.HasDied += HasDied;
 
         _bossAnimator = GetComponent<BossAnimator>();
